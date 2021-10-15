@@ -20,3 +20,17 @@
 .msg-car h2,h5{
     color: #000000;
 } 
+
+.contato_top{
+    background-color: #dddddd;
+    padding: 5px;
+}
+.contato_itens{
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    font-size: 15pt;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
