@@ -1,12 +1,28 @@
-.parceiros{
+body{
+    font-family: sans-serif;
+}
+
+.row_marcas{
+    background-color: #7a7a7a;
+}
+
+.row_marcas h3{
+    font-family: sans-serif;
+    color: #b6b6b6;
+    font-weight: 700;
+    font-size: 40pt;
+}
+
+
+.marcas{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
 }
 
-.parceiros img{
+.marcas img{
     margin: 5px;
-    width: 90px;
+    width: 200px;
     margin: 15px;
 }
 
