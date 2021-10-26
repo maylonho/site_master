@@ -45,7 +45,7 @@ body{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    font-size: 15pt;
+    font-size: 12pt;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
@@ -66,15 +66,19 @@ body{
 }
 
 .produto_item{
+    overflow: hidden;
     max-width: 200px;
+    height: 250px;
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
     margin: 5px;
     flex-grow: 1;
     flex-basis: 1;
-    justify-content: center;
     text-align: center;
     border: 1px solid #707070;
+    border-radius: 10px;
 }
 
 .produto_item:hover{
@@ -82,10 +86,13 @@ body{
     border: 2px solid #000000;
 }
 .produto_item:hover img{
-    opacity: 0.5;
+    transform: scale(1.2);
 }
 
 .produtos img{
-    max-width: 100%;
+    max-width: 70%;
+    height: 70%;
+    border-radius: 15px;
+    transition: all 0.5s;
 }
 
