@@ -65,6 +65,10 @@ body{
     margin-bottom: 100px;
 }
 
+.produtos a{
+    text-decoration: none;
+}
+
 .produto_item{
     overflow: hidden;
     max-width: 200px;
@@ -96,8 +100,7 @@ body{
     transition: all 0.5s;
 }
 
-.servicos-col-esq{
-}
+
 
 .servicos-col-dir{
     text-align: center;
