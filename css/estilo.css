@@ -115,3 +115,19 @@ body{
     width: 100%;
 }
 
+.btn-voltar{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #9696ff;
+    border-radius: 5px;
+    padding: 5px 25px 0px 25px;
+}
+
+.btn-voltar:hover{
+    background-color: #9696FF;
+    border: 1px solid #000000;
+    cursor: pointer;
+    color: white;
+}
+
