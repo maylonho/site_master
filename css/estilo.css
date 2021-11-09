@@ -1,6 +1,92 @@
+
+@media only screen and (min-width:760px){
+    #slide{
+        transform: translate(0%,-10%); 
+    }
+    
+    .slide{
+        height: 500px;
+    }
+
+    .produto_item{
+        max-width: 200px;
+        height: 250px;
+    }
+
+    .servicos{
+        margin-bottom: 25px;
+        padding-bottom: 30px;
+        border-bottom: 2px solid #b6b6b6;
+    }
+
+    .zap{
+        width: 90px; 
+        bottom: 20px; 
+    }
+}
+
+@media only screen and (max-width:761px) {
+    .empresa_foto{
+        overflow: hidden;
+        height: 280px;
+        order: 0;
+    }
+
+    .empresa_desc{
+        order: 1;
+    }
+    
+    .empresa_foto img{
+        transform: translate(0%, -30%);
+    }   
+
+    .produto_item{
+        max-width: 120px;
+        height: 150px;
+    }
+
+    .produto_item h4{
+        font-size: 12pt;
+    }
+
+    .servicos .tit{
+        order: 0;
+    }
+    .servicos .img{
+        order: 1;
+    }
+    .servicos .texto{
+        order: 2;
+    }
+
+    .zap{
+        width: 70px; 
+        bottom: 90px; 
+    }
+
+}
+.zap{
+    position: fixed;
+    right: 20px; 
+    z-index: 1000;
+}
+.zap img{
+    width: 100%;
+    cursor: pointer;
+}
+
+.zap:hover{
+    opacity: 0.9;
+    border: 1px solid #9696ff;
+    border-radius: 50%;
+    width: 80px;
+}
+
+
 body{
     font-family: sans-serif;
 }
+
 
 .row_marcas{
     background-color: #7a7a7a;
@@ -71,8 +157,6 @@ body{
 
 .produto_item{
     overflow: hidden;
-    max-width: 200px;
-    height: 250px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -104,6 +188,17 @@ body{
 
 .servicos-col-dir{
     text-align: center;
+    margin-top: 20px;
+    margin-bottom: 50px;
+}
+
+.servicos.row{
+    margin-left: 0; 
+    margin-right: 0;
+}
+
+.servicos .tit{
+    text-decoration: underline;
 }
 
 .img-serv{
