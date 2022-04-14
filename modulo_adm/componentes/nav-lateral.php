@@ -5,6 +5,10 @@ if ($_SESSION['pg'] == 'home') {
     $pg1 = "active";
 }elseif ($_SESSION['pg'] == 'listProdutos') {
     $pg2 = "active";
+}elseif ($_SESSION['pg'] == 'cadManut') {
+    $pg3 = "active";
+}elseif ($_SESSION['pg'] == 'listManut') {
+    $pg4 = "active";
 }
 
 
@@ -24,6 +28,12 @@ if ($_SESSION['pg'] == 'home') {
     </li>
     <li class="nav-item">
         <a class="nav-link <?php echo $pg2;?>" href="listTarefas.php">Listar Tarefas</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link <?php echo $pg3;?>" href="cadManut.php">Cadastrar Manut.</a>
+    </li>
+    <li class="nav-item">
+        <a class="nav-link <?php echo $pg4;?>" href="listManut.php">Listar Manut.</a>
     </li>
     </ul>
         

@@ -1,6 +1,7 @@
 <?php
     session_start();
     include("../php/conexao.php");
+    include("../php/verifica_login.php");
 
     $id_tarefa = mysqli_real_escape_string($conexao, trim($_GET['id_tarefa']));
     $nome_tarefa = mysqli_real_escape_string($conexao, trim($_POST['nome_tarefa']));

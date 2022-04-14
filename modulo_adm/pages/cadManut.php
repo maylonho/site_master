@@ -28,7 +28,7 @@ include("../php/verifica_login.php");
         
       <div class="col-sm-4 col-md-2 mb-3">
       <!--Menu Lateral-->
-      <?php $_SESSION['pg'] = "cadContas"; include("../componentes/nav-lateral.php") ?>
+      <?php $_SESSION['pg'] = "cadManut"; include("../componentes/nav-lateral.php") ?>
       </div>
 
       <!--CORPO DO SITE PRINCIPAL-->
@@ -37,43 +37,44 @@ include("../php/verifica_login.php");
         <div class="container">
 
         <?php
-          $id_tarefa = "";
-          if(isset($_GET['id_tarefa'])){
-            $id_tarefa = "?id_tarefa=". $_GET['id_tarefa'];
+          $id_servico = "";
+          if(isset($_GET['id_servico'])){
+            $id_servico = "?id_servico=". $_GET['id_servico'];
           }
         ?>
-          <form class="row g-3" method="POST" action="../php/proc_tarefas.php<?php echo $id_tarefa; ?>">
+          <form class="row g-3" method="POST" action="../php/proc_manut.php<?php echo $id_servico; ?>">
 
-          <div class="col-6">
-              <label for="nome_tarefa" class="form-label">Nome da Tarefa</label>
-              <input value="<?php if(isset($_GET['nome_tarefa'])) : echo $_GET['nome_tarefa']; endif; ?>" type="text" class="form-control" id="nome_tarefa" name="nome_tarefa" required>
+          <div class="col-5">
+              <label for="numero_serie_servico" class="form-label">Número de Série</label>
+              <input value="<?php if(isset($_GET['numero_serie_servico'])) : echo $_GET['numero_serie_servico']; endif; ?>" type="text" class="form-control" id="numero_serie_servico" name="numero_serie_servico" required>
             </div>
-            <div class="col-xl-3 col-sm-6">
-              <label for="urgencia_tarefa" class="form-label">Grau de urgencia</label>
-              <select type="text" class="form-select" id="urgencia_tarefa" name="urgencia_tarefa">
+            <div class="col-5">
+              <label for="modelo_servico" class="form-label">Modelo</label>
+              <select type="text" class="form-select" id="modelo_servico" name="modelo_servico">
                 <?php
-                  if(isset($_GET['urgencia_tarefa'])) : echo "<option selected>" . $_GET['urgencia_tarefa'] . "</option>"; endif;
+                  if(isset($_GET['modelo_servico'])) : echo "<option selected>" . $_GET['modelo_servico'] . "</option>"; endif;
                 ?>
-                <option>Leve</option>
-                <option>Moderada</option>
-                <option>Alta</option>
-                <option>Urgente</option>
+                <option>PRO5150</option>
+                <option>EP450</option>
+                <option>DEP450</option>
+                <option>DEP250</option>
+                <option>DGP5050</option>
+                <option>DGP8050</option>
+                <option>DGP8050E</option>
+                <option>DGP8550</option>
+                <option>DGP8050EX</option>
+                <option>DGP8550EX</option>
               </select>
             </div>
-            <div class="col-9">
-              <label for="descricao_tarefa" class="form-label">Descrição da Tarefa</label>
-              <input value="<?php if(isset($_GET['descricao_tarefa'])) : echo $_GET['descricao_tarefa']; endif; ?>" type="text" class="form-control" id="descricao_tarefa" name="descricao_tarefa" required>
+            <div class="col-10">
+              <label for="defeito_servico" class="form-label">Problema</label>
+              <input value="<?php if(isset($_GET['defeito_servico'])) : echo $_GET['defeito_servico']; endif; ?>" type="text" class="form-control" id="defeito_servico" name="defeito_servico" required>
+            </div>
+            <div class="col-10">
+              <label for="solucao_servico" class="form-label">Solução</label>
+              <input value="<?php if(isset($_GET['solucao_servico'])) : echo $_GET['solucao_servico']; endif; ?>" type="text" class="form-control" id="solucao_servico" name="solucao_servico" required>
             </div>
 
-            <?php
-              if(isset($_GET['finalizado_tarefa']) && $_GET['finalizado_tarefa']!="") :
-            ?>
-            <div class="row mt-4">
-              <h5>Finalizado por: <?php echo $_GET['finalizado_tarefa']; ?></h5>
-            </div>
-            <?php
-              endif;
-            ?>
             <div class="col-md-9 row justify-content-end mt-5">
                 
                 <div class="col-auto">
@@ -83,7 +84,6 @@ include("../php/verifica_login.php");
                   ?>
                           <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="definirDadosModal('Confimação', 'Tem certeza que deseja excluir a Tarefa?')">Excluir</button>
                           <button type='submit' name='salvar' class='btn btn-primary '>Salvar</button>
-                          <button type='submit' name='finalizar' class='btn btn-success '>Finalizar</button>
 
 
 
@@ -119,23 +119,23 @@ include("../php/verifica_login.php");
 
           
           <?php
-          if(isset($_SESSION['cad_tarefa_realizado'])) :
+          if(isset($_SESSION['cad_manut_realizado'])) :
           ?>
           <div class="alert alert-success alert-dismissible fade show" role="alert">
-            <strong>Sucesso!</strong> A Tarefa foi cadastrada com sucesso.
+            <strong>Sucesso!</strong> A Manutenção foi cadastrada com sucesso.
             <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
           </div>
           <?php 
-          elseif(isset($_SESSION['cad_tarefa_erro'])) :
+          elseif(isset($_SESSION['cad_manut_erro'])) :
             ?>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              <strong>ERRO!</strong> Nao foi possivel cadastrar a tarefa, tente novamente.
+              <strong>ERRO!</strong> Nao foi possivel cadastrar a manutenção, tente novamente.
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
             <?php 
             endif;
-            unset($_SESSION['cad_tarefa_realizado']);
-            unset($_SESSION['cad_tarefa_erro']);
+            unset($_SESSION['cad_manut_realizado']);
+            unset($_SESSION['cad_manut_erro']);
           ?>
         </div>
               
