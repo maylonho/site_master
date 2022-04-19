@@ -1,0 +1,12 @@
+.linha_tabela{
+    cursor:pointer; 
+}
+.linha_tabela_urgente{
+    background-color: rgb(255, 108, 108);
+}
+#linha_tabela_azul{
+    background-color: #0275d8;
+}
+#linha_tabela_branco{
+    background-color: #fff;
+}
