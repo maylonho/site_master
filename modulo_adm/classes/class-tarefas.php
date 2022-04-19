@@ -48,7 +48,6 @@ class Tarefas {
             
 
             $linkedit ="nome_tarefa=" . str_replace(' ', '+', $nome_tarefa) . "&";
-            $linkedit .= "nome_tarefa=" . str_replace(' ', '+', $nome_tarefa) . "&";
             $linkedit .= "descricao_tarefa=" . str_replace(' ', '+', $descricao_tarefa) . "&";
             $linkedit .= "urgencia_tarefa=" . str_replace(' ', '+', $urgencia_tarefa) . "&";
             $linkedit .= "id_tarefa=" . str_replace(' ', '+', $id_tarefa) . "&";
@@ -80,14 +79,69 @@ class Tarefas {
         }
         echo "</tbody>
         </table>";
+    }// fecha funcao listarTarefas
+
+    
+    public function listarComentTarefas($consulta){
+        include("../php/conexao.php");
+        $sql = $consulta;
+        $result = mysqli_query($conexao, $sql);
+        echo "
+        <table class='table'>
+            <thead>
+            <tr>
+                <th scope='col'>Comentários</th>
+            </tr>
+            </thead>
+            <tbody>";
+        while($row = mysqli_fetch_assoc($result)){
+            $data_comentario = $row['data_comentario'];
+            $texto_comentario = $row['texto_comentario'];
+            $func_comentario = $row['func_comentario'];
+
+            
+            echo 
+            "
+                <tr>
+                    <td>".$data_comentario."</td>
+                    <td>".$texto_comentario."</td>
+                    <td>Por: ".$func_comentario."</td>
+                </tr>
+            
+            ";
+        }
+        echo "</tbody>
+        </table>";
+    }//fecha funcao listarComentTarefas
+    
+    public function enviarEmailTarefa($email_destino_t, $usuario_envia){
+        //1 – Definimos Para quem vai ser enviado o email
+        $para = $email_destino_t;
+        $remetente = "nao-responder@masterradios.com.br";
+
+        //2 - resgatar os campos digitados no formulário e grava nas variaveis
+    
+        $assunto = "NOVA TAREFA CRIADA POR " . $usuario_envia;
+        $nome_tarefa = $_POST['nome_tarefa'];
+        $descricao_tarefa = $_POST['descricao_tarefa'];
+        $urgencia_tarefa = $_POST['urgencia_tarefa'];
+    
+        //4 – Agora definimos a  mensagem que vai ser enviado no e-mail
+    
+        $mensagem = "<strong>Tarefa: </strong>".$nome_tarefa;
+        $mensagem .= "<br><br><br>  <strong>Descrição: </strong>".$descricao_tarefa;
+        $mensagem .= "<br>          <strong>A tarefa tem prioridade: </strong>".$urgencia_tarefa;
+        $mensagem .= "<br><br><br>  <strong>Master Radiocomunicação </strong>";
+        $mensagem .= "<br>          <strong>Este e-mail foi enviado do Sistema ADM Interno</strong>";
+        $mensagem .= "<br>          Não respoder esse email, email automatico.";
+    
+        $header = "MIME-Version: 1.0\n";
+        $header .= "Content-type: text/html; charset=utf-8\n";
+        $header .= "from: $remetente\n";
+    
+        $envio = mail($para, $assunto, $mensagem, $header);  //função que faz o envio do email.
     }
-
     
-
-    
-    
-
-
 }
 
 ?>

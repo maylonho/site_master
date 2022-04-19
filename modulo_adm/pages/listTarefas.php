@@ -42,16 +42,19 @@ $tarefas = new Tarefas();
       
               
           <div class="container mt-3">
-            <form class="row g-3" action="listTarefas.php" method="GET">
+            <form class="row g-3 justify-content-between" action="listTarefas.php" method="GET">
           
               <div class="col-md-3">
                 <label for="data-inicial" class="form-label">Nome da Tarefa</label>
                 <input type="text" class="form-control" id="nome" name="nome">
               </div>
-              <div class="col-md-4 row justify-content-end mt-5">
+              <div class="col-md-2 row justify-content-end mt-5">
                   <div class="col-auto">
                       <button type="submit" class="btn btn-primary">Pesquisar</button>
                   </div>
+              </div>
+              <div class="col-md-5 row justify-content-end mt-5">
+                  <a href="?mostrar=all">Mostrar tarefas finalizadas</a>
               </div>
             </form>
 
@@ -79,16 +82,15 @@ $tarefas = new Tarefas();
           
               <?php
 
-                if(!isset($_GET['nome']) ){
-                  $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas ORDER BY data_tarefa DESC");
+                if(!isset($_GET['nome']) && !isset($_GET['mostrar'])){
+                  $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas WHERE grau_conclusao<5 ORDER BY data_tarefa DESC");
                 }
-              
-              
                 if (isset($_GET['nome'])) {
                   $nome_tarefa = $_GET['nome'];
-                  $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas WHERE nome_tarefa like '%$nome_tarefa%'");
-
-
+                  $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas WHERE nome_tarefa like '%$nome_tarefa%' ORDER BY data_tarefa DESC");
+                }              
+                if (isset($_GET['mostrar'])) {
+                  $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas ORDER BY data_tarefa DESC");
                 }
                 ?>
                   

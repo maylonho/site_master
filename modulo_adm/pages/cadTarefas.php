@@ -1,6 +1,8 @@
 <?php
 session_start();
+include("../classes/class-tarefas.php");
 include("../php/verifica_login.php");
+$tarefas = new Tarefas();
 ?>
 
 <!DOCTYPE html>
@@ -44,11 +46,11 @@ include("../php/verifica_login.php");
         ?>
           <form class="row g-3" method="POST" action="../php/proc_tarefas.php<?php echo $id_tarefa; ?>">
 
-          <div class="col-6">
+          <div class="col-md-9">
               <label for="nome_tarefa" class="form-label">Nome da Tarefa</label>
               <input value="<?php if(isset($_GET['nome_tarefa'])) : echo $_GET['nome_tarefa']; endif; ?>" type="text" class="form-control" id="nome_tarefa" name="nome_tarefa" required>
             </div>
-            <div class="col-xl-3 col-sm-6">
+            <div class="col-md-3">
               <label for="urgencia_tarefa" class="form-label">Grau de urgencia</label>
               <select type="text" class="form-select" id="urgencia_tarefa" name="urgencia_tarefa">
                 <?php
@@ -60,7 +62,7 @@ include("../php/verifica_login.php");
                 <option>Urgente</option>
               </select>
             </div>
-            <div class="col-9">
+            <div class="col">
               <label for="descricao_tarefa" class="form-label">Descrição da Tarefa</label>
               <input value="<?php if(isset($_GET['descricao_tarefa'])) : echo $_GET['descricao_tarefa']; endif; ?>" type="text" class="form-control" id="descricao_tarefa" name="descricao_tarefa" required>
             </div>
@@ -74,37 +76,39 @@ include("../php/verifica_login.php");
             <?php
               endif;
             ?>
-            <div class="col-md-9 row justify-content-end mt-5">
+            <div class="row justify-content-end mt-5">
                 
                 <div class="col-auto">
 
                 <?php
                   if(isset($_GET['modo']) && $_GET['modo'] == 'editar') :
                   ?>
-                          <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="definirDadosModal('Confimação', 'Tem certeza que deseja excluir a Tarefa?')">Excluir</button>
-                          <button type='submit' name='salvar' class='btn btn-primary '>Salvar</button>
-                          <button type='submit' name='finalizar' class='btn btn-success '>Finalizar</button>
+                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="definirDadosModal('Confimação', 'Tem certeza que deseja excluir a Tarefa?')">Excluir</button>
+                    <button type='submit' name='salvar' class='btn btn-primary '>Salvar</button>
+                    <button type='submit' name='finalizar' class='btn btn-success '>Finalizar</button>
 
 
 
-                                  <!-- Modal -->
-                          <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                            <div class="modal-dialog">
-                              <div class="modal-content">
-                                <div class="modal-header">
-                                  <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body" id="modal-body">
-                                  ...
-                                </div>
-                                <div class="modal-footer">
-                                  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                                  <button type="submit" name="excluir" class="btn btn-danger">Continuar</button>
-                                </div>
-                              </div>
-                            </div>
+                            <!-- Modal -->
+                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                      <div class="modal-dialog">
+                        <div class="modal-content">
+                          <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                           </div>
+                          <div class="modal-body" id="modal-body">
+                            ...
+                          </div>
+                          <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                            <button type="submit" name="excluir" class="btn btn-danger">Continuar</button>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+
+
                   <?php 
                   elseif(!isset($_GET['modo'])) :
                     ?>
@@ -136,6 +140,23 @@ include("../php/verifica_login.php");
             endif;
             unset($_SESSION['cad_tarefa_realizado']);
             unset($_SESSION['cad_tarefa_erro']);
+          ?>
+
+          <?php
+            if(isset($_GET['modo']) && $_GET['modo'] == 'editar'){
+            $id_tarefa_coment = $_GET['id_tarefa'];
+          ?>
+          <form class="row g-3" method="POST" action="../php/proc_tarefas.php?id_tarefa=<?php echo $id_tarefa_coment; ?>">
+            <div class="col-md-4">
+              <input type="text" placeholder="Adicionar comentário" class="form-control" id="comentario_tarefa" name="comentario_tarefa">
+            </div>
+            <div class="col-md-4">
+            <button type='submit' name='comentar' class='btn btn-primary '>Comentar</button>
+            </div>
+          </form>
+          <?php
+              $tarefas->listarComentTarefas("SELECT *,date_format(`data_comentario`,'%d/%m/%Y - %H:%i') as `data_comentario` FROM comentario_tarefas WHERE id_tarefa='$id_tarefa_coment' ORDER BY data_comentario DESC");
+            }
           ?>
         </div>
               

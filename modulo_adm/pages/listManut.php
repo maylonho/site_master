@@ -124,7 +124,7 @@ $tarefas = new Servicos();
               
                 if (isset($_GET['n'])) {
                   $numero_serie_servico = $_GET['n'];
-                  $tarefas->listarManut("SELECT *,date_format(`data_servico`,'%d/%m/%Y - %H:%i') as `data_servico` FROM servicos WHERE numero_serie_servico like '%$numero_serie_servico%'");
+                  $tarefas->listarManut("SELECT *,date_format(`data_servico`,'%d/%m/%Y - %H:%i') as `data_servico` FROM servicos WHERE numero_serie_servico like '%$numero_serie_servico%' ORDER BY id_servico DESC");
 
 
                 }
