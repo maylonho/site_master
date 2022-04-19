@@ -25,7 +25,7 @@ session_start();
         <!-- Icon -->
         <div class="imgLogo d-flex" style="width: 100px;">
           <img src="../imgs/logo_moto.jpg" id="icon" alt="User Icon"/>
-          <h5>Master ADM</h5>
+          <h5>Master ADM SGI</h5>
         </div>
         <div class="row">
           <?php if(isset($_SESSION['usuario_invalido'])) : ?>
