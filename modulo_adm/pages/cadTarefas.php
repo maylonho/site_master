@@ -51,7 +51,7 @@ $tarefas = new Tarefas();
               <input value="<?php if(isset($_GET['nome_tarefa'])) : echo $_GET['nome_tarefa']; endif; ?>" type="text" class="form-control" id="nome_tarefa" name="nome_tarefa" required>
             </div>
             <div class="col-md-3">
-              <label for="urgencia_tarefa" class="form-label">Grau de urgencia</label>
+              <label for="urgencia_tarefa" class="form-label">Prioridade</label>
               <select type="text" class="form-select" id="urgencia_tarefa" name="urgencia_tarefa">
                 <?php
                   if(isset($_GET['urgencia_tarefa'])) : echo "<option selected>" . $_GET['urgencia_tarefa'] . "</option>"; endif;
@@ -82,8 +82,10 @@ $tarefas = new Tarefas();
 
                 <?php
                   if(isset($_GET['modo']) && $_GET['modo'] == 'editar') :
+                    $btn_excluir = "";
+                    if($_SESSION['usuario_logado'] !== "MAYLON") : $btn_excluir = "disabled"; endif;
                   ?>
-                    <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="definirDadosModal('Confimação', 'Tem certeza que deseja excluir a Tarefa?')">Excluir</button>
+                    <button <?php echo $btn_excluir ?> type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="definirDadosModal('Confimação', 'Tem certeza que deseja excluir a Tarefa?')">Excluir</button>
                     <button type='submit' name='salvar' class='btn btn-primary '>Salvar</button>
                     <button type='submit' name='finalizar' class='btn btn-success '>Finalizar</button>
 

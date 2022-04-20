@@ -13,7 +13,7 @@ class Tarefas {
                 <th scope='col'>Data</th>
                 <th scope='col'>Nome</th>
                 <th scope='col'>Prioridade</th>
-                <th scope='col'>Criador</th>
+                <th scope='col'>Criado por:</th>
                 <th scope='col'>Status</th>
             </tr>
             </thead>
@@ -27,24 +27,37 @@ class Tarefas {
             $criador_tarefa = $row['criador_tarefa'];
             $grau_conclusao = $row['grau_conclusao'];
             $finalizado_tarefa = $row['finalizado_tarefa'];
-            $img_status = "<img src='../imgs/status/nivel_0.png' width='100px'>";
+            $img_status = "";
+            $usuario_logado = $_SESSION['usuario_logado'];
 
 
-            if($grau_conclusao==1){
-                $img_status = "<img src='../imgs/status/nivel_1.png' width='100px'>";
+            if($finalizado_tarefa !== ""){
+                if (mb_strpos($finalizado_tarefa, "MAYLON") !== false) {
+                    $img_status .= "<img src='../imgs/status/cor_maylon.png' width='20px'>";
+                }
+                if (mb_strpos($finalizado_tarefa, "ISABELA") !== false) {
+                    $img_status .= "<img src='../imgs/status/cor_isabela.png' width='20px'>";
+                }
+                if (mb_strpos($finalizado_tarefa, "EMILY") !== false) {
+                    $img_status .= "<img src='../imgs/status/cor_emily.png' width='20px'>";
+                }
+                if (mb_strpos($finalizado_tarefa, "KAROL") !== false) {
+                    $img_status .= "<img src='../imgs/status/cor_karol.png' width='20px'>";
+                }
+                if (mb_strpos($finalizado_tarefa, "ELIANA") !== false) {
+                    $img_status .= "<img src='../imgs/status/cor_eliana.png' width='20px'>";
+                }
+                if (mb_strpos($finalizado_tarefa, "ANIBAL") !== false) {
+                    $img_status .= "<img src='../imgs/status/cor_anibal.png' width='20px'>";
+                }
+                if ($grau_conclusao > 4) {
+                    $img_status .= "<img src='../imgs/status/cor_concluido.png' width='20px'>";
+                }
+            }else{
+                $img_status = "<img src='../imgs/status/nivel_0.png' width='100px'>";
             }
-            elseif($grau_conclusao==2){
-                $img_status = "<img src='../imgs/status/nivel_2.png' width='100px'>";
-            }
-            elseif($grau_conclusao==3){
-                $img_status = "<img src='../imgs/status/nivel_3.png' width='100px'>";
-            }
-            elseif($grau_conclusao==4){
-                $img_status = "<img src='../imgs/status/nivel_4.png' width='100px'>";
-            }
-            elseif($grau_conclusao>=4){
-                $img_status = "<img src='../imgs/status/nivel_5.png' width='100px'>";
-            }
+
+            
             
 
             $linkedit ="nome_tarefa=" . str_replace(' ', '+', $nome_tarefa) . "&";
