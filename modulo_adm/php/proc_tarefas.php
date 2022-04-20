@@ -30,6 +30,7 @@
 
     switch (get_post_action('cadastrar', 'excluir', 'salvar', 'finalizar', 'comentar')) {
         case 'cadastrar':
+            
             $sql = "INSERT INTO tarefas (data_tarefa, nome_tarefa, descricao_tarefa, urgencia_tarefa, criador_tarefa) VALUES (NOW(), '$nome_tarefa', '$descricao_tarefa', '$urgencia_tarefa', '$usuario_logado')";
             if($conexao->query($sql) === TRUE) {
                 $_SESSION['cad_tarefa_realizado'] = true;
@@ -38,11 +39,8 @@
             }
 
             $conexao->close();
+            
             $tarefas->enviarEmailTarefa("tecnica@masterradios.com.br", $usuario_logado);
-            $tarefas->enviarEmailTarefa("oliveira_maylon@hotmail.com", $usuario_logado);
-            $tarefas->enviarEmailTarefa("maylonhe@gmail.com", $usuario_logado);
-            $tarefas->enviarEmailTarefa("maylon_121@hotmail.com", $usuario_logado);
-            $tarefas->enviarEmailTarefa("1701997@aluno.univesp.br", $usuario_logado);
             //$tarefas->enviarEmailTarefa("sgi@masterradios.com.br", $usuario_logado);
 
             header('Location:../pages/cadTarefas.php');
