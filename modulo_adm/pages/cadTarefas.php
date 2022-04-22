@@ -2,6 +2,7 @@
 session_start();
 include("../classes/class-tarefas.php");
 include("../php/verifica_login.php");
+$_SESSION['pg'] = "cadTarefas"; 
 $tarefas = new Tarefas();
 ?>
 
@@ -22,19 +23,19 @@ $tarefas = new Tarefas();
     <!--Scrips Pessoais - Funções -->
     <script src="../js/functions.js" ></script>
 
-    <div class="container-fluid">
     <!--Menu nav Superior-->
     <?php include("../componentes/nav-bar-sup.php");?>
+    <div class="container-fluid">
 
     <div class="row mb-5">
         
-      <div class="col-sm-4 col-md-2 mb-3">
+      <div class="col-sm-4 col-md-3 col-lg-2 mb-3 text-center">
       <!--Menu Lateral-->
-      <?php $_SESSION['pg'] = "cadContas"; include("../componentes/nav-lateral.php") ?>
+      <?php include("../componentes/nav-lateral.php") ?>
       </div>
 
       <!--CORPO DO SITE PRINCIPAL-->
-      <div class="col-sm-8 col-md-10" style="background-color: rgb(255, 255, 255); height: 80vh;">
+      <div class="col-sm-8 col-md-9 col-lg-10" style="background-color: rgb(255, 255, 255); height: 80vh;">
                         
         <div class="container">
 

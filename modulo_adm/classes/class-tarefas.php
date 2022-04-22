@@ -15,10 +15,13 @@ class Tarefas {
                 <th scope='col'>Prioridade</th>
                 <th scope='col'>Criado por:</th>
                 <th scope='col'>Status</th>
+                <th scope='col'> </th>
             </tr>
             </thead>
             <tbody>";
         while($row = mysqli_fetch_assoc($result)){
+
+
             $id_tarefa = $row['id_tarefa'];
             $data_tarefa = $row['data_tarefa'];
             $nome_tarefa = $row['nome_tarefa'];
@@ -29,6 +32,13 @@ class Tarefas {
             $finalizado_tarefa = $row['finalizado_tarefa'];
             $img_status = "";
             $usuario_logado = $_SESSION['usuario_logado'];
+
+            
+            $sql_co = "SELECT count(id_tarefa) as `qtd_coment` FROM comentario_tarefas WHERE id_tarefa='$id_tarefa'";
+            $result_co = mysqli_query($conexao, $sql_co);
+            $comentarios = mysqli_fetch_assoc($result_co);
+  
+            $qtd_coment = $comentarios['qtd_coment'];
 
 
             if($finalizado_tarefa !== ""){
@@ -86,6 +96,7 @@ class Tarefas {
                     <td>".$urgencia_tarefa."</td>
                     <td>".$criador_tarefa."</td>
                     <td>".$img_status."</td>
+                    <td>".$qtd_coment. " <img src='../imgs/coment.png' width='25px'></td>
                 </tr>
             
             ";

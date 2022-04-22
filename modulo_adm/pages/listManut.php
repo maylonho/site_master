@@ -2,6 +2,7 @@
 session_start();
 include("../classes/class-manutencao.php");
 include("../php/verifica_login.php");
+$_SESSION['pg'] = "listManut"; 
 $tarefas = new Servicos();
 ?>
 
@@ -22,37 +23,34 @@ $tarefas = new Servicos();
     <!--Scrips Pessoais - Funções -->
     <script src="../js/functions.js" ></script>
 
+    <!--Menu nav Superior-->
+    <?php include("../componentes/nav-bar-sup.php");?>    
     <div class="container-fluid">
-    <?php include("../componentes/nav-bar-sup.php");?>
 
     <div class="row mb-5">
           
-      <div class="col-sm-4 col-md-2 mb-3">
-      
-              
-                                
-              <!--Menu Lateral-->
-              <?php $_SESSION['pg'] = "listManut"; include("../componentes/nav-lateral.php") ?>
-                  
-          
-          
+      <div class="col-sm-4 col-md-3 col-lg-2 mb-3 text-center">
+                    
+        <!--Menu Lateral-->
+        <?php include("../componentes/nav-lateral.php") ?>
+
       </div>
             
-      <div class="col-sm-8 col-md-10">
+      <div class="col-sm-8 col-md-9 col-lg-10">
       
               
           <div class="container mt-3">
             <form class="row g-3 justify-content-between" action="listManut.php" method="GET">
           
-              <div class="col-2">
+              <div class="col-md-3">
                 <label for="n" class="form-label">Número de Série</label>
                 <input type="text" class="form-control" id="n" name="n">
               </div>
-              <div class="col-2 mt-5">
+              <div class="col-md-3 mt-5">
                 <button type="submit" class="btn btn-primary">Pesquisar</button>
               </div>
 
-              <div class="col-2">
+              <div class="col-md-3">
               <script>
                 function alterarQuantidadeItens(){
                   var select = document.getElementById('qtd_itens');
@@ -61,7 +59,7 @@ $tarefas = new Servicos();
                 }
               </script>
               <label for="qtd_itens" class="form-label">Itens na página</label>
-                <select type="text" class="form-select" id="qtd_itens" name="qtd_itens" onchange="alterarQuantidadeItens();">
+                <select type="text" class="form-select" id="qtd_itens" onchange="alterarQuantidadeItens();">
                   <option value="all">Selecione</option>
                   <option value="50">50</option>
                   <option value="100">100</option>
@@ -69,6 +67,11 @@ $tarefas = new Servicos();
                   <option value="300">300</option>
                   <option value="all">Tudo</option>
                 </select>
+              </div>
+              <div class="col-md-3 mt-5">
+                  <div class="d-flex justify-content-end">
+                      <button type="button" class="btn btn-danger" onclick="location.href='cadManut.php'"><img src="../imgs/add-branco.png" width="20px"> Criar</button>
+                  </div>
               </div>
 
             </form>

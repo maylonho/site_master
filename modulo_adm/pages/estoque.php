@@ -2,6 +2,7 @@
 session_start();
 include("../php/conexao.php");
 include("../php/verifica_login.php");
+$_SESSION['pg'] = "estoque"; 
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -15,21 +16,23 @@ include("../php/verifica_login.php");
 </head>
 <body style="margim: 0px; overflow-x: hidden;">
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js" integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW" crossorigin="anonymous"></script>
-    
+  
+  <!--Menu nav Superior-->
+  <?php include("../componentes/nav-bar-sup.php");?>    
   <div class="container-fluid">
-      <?php include("../componentes/nav-bar-sup.php");?>
+
 
         <div class="row mb-5">
-          <div class="col-sm-4 col-md-2 mb-3">
+          <div class="col-sm-4 col-md-3 col-lg-2 mb-3 text-center">
                             
             <!--Menu Lateral-->
-            <?php $_SESSION['pg'] = "estoque"; include("../componentes/nav-lateral.php") ?>
+            <?php include("../componentes/nav-lateral.php") ?>
                 
           </div>
 
 
           <!--CORPO DO SITE PRINCIPAL-->
-          <div class="col-sm-8 col-md-10" style="background-color: rgb(255, 255, 255); height: 50vh;">
+          <div class="col-sm-8 col-md-9 col-lg-10" style="background-color: rgb(255, 255, 255); height: 50vh;">
               <h1 style="text-align: center;">Estoque</h1>
 
               <div class="produtos">

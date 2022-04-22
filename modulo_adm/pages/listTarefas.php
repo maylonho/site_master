@@ -2,6 +2,7 @@
 session_start();
 include("../classes/class-tarefas.php");
 include("../php/verifica_login.php");
+$_SESSION['pg'] = "listTarefas"; 
 $tarefas = new Tarefas();
 ?>
 
@@ -22,23 +23,20 @@ $tarefas = new Tarefas();
     <!--Scrips Pessoais - Funções -->
     <script src="../js/functions.js" ></script>
 
-    <div class="container-fluid">
+    <!--Menu nav Superior-->
     <?php include("../componentes/nav-bar-sup.php");?>
+    <div class="container-fluid">
 
     <div class="row mb-5">
           
-      <div class="col-sm-4 col-md-2 mb-3">
-      
-              
-                                
-              <!--Menu Lateral-->
-              <?php $_SESSION['pg'] = "listProdutos"; include("../componentes/nav-lateral.php") ?>
-                  
-          
-          
+      <div class="col-sm-4 col-md-3 col-lg-2 mb-3 text-center">
+                       
+        <!--Menu Lateral-->
+        <?php include("../componentes/nav-lateral.php") ?>
+
       </div>
             
-      <div class="col-sm-8 col-md-10">
+      <div class="col-sm-8 col-md-9 col-lg-10">
       
               
           <div class="container mt-3">
@@ -48,13 +46,18 @@ $tarefas = new Tarefas();
                 <label for="data-inicial" class="form-label">Nome da Tarefa</label>
                 <input type="text" class="form-control" id="nome" name="nome">
               </div>
-              <div class="col-md-2 row justify-content-end mt-5">
+              <div class="col-md-3 row justify-content-start mt-5">
                   <div class="col-auto">
                       <button type="submit" class="btn btn-primary">Pesquisar</button>
                   </div>
               </div>
-              <div class="col-md-5 row justify-content-end mt-5">
-                  <a href="?mostrar=all">Mostrar tarefas finalizadas</a>
+              <div class="col-md-3 mt-5 text-end">
+                  <div><a href="?mostrar=all">Mostrar tarefas finalizadas</a></div>
+              </div>
+              <div class="col-md-3 row justify-content-end mt-5">
+                  <div class="col-auto">
+                      <button type="button" class="btn btn-danger" onclick="location.href='cadTarefas.php'"><img src="../imgs/add-branco.png" width="20px"> Criar</button>
+                  </div>
               </div>
             </form>
 

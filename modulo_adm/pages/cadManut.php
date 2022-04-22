@@ -1,6 +1,7 @@
 <?php
 session_start();
 include("../php/verifica_login.php");
+$_SESSION['pg'] = "cadManut"; 
 ?>
 
 <!DOCTYPE html>
@@ -20,19 +21,20 @@ include("../php/verifica_login.php");
     <!--Scrips Pessoais - Funções -->
     <script src="../js/functions.js" ></script>
 
-    <div class="container-fluid">
     <!--Menu nav Superior-->
     <?php include("../componentes/nav-bar-sup.php");?>
+    <div class="container-fluid">
 
-    <div class="row mb-5">
+
+    <div class="row mt-3">
         
-      <div class="col-sm-4 col-md-2 mb-3">
+      <div class="col-sm-4 col-md-3 col-lg-2 mb-3 text-center">
       <!--Menu Lateral-->
-      <?php $_SESSION['pg'] = "cadManut"; include("../componentes/nav-lateral.php") ?>
+      <?php include("../componentes/nav-lateral.php") ?>
       </div>
 
       <!--CORPO DO SITE PRINCIPAL-->
-      <div class="col-sm-8 col-md-10" style="background-color: rgb(255, 255, 255); height: 80vh;">
+      <div class="col-sm-8 col-md-9 col-lg-10" style="background-color: rgb(255, 255, 255); height: 80vh;">
                         
         <div class="container">
 
@@ -44,13 +46,17 @@ include("../php/verifica_login.php");
         ?>
           <form class="row g-3" method="POST" action="../php/proc_manut.php<?php echo $id_servico; ?>">
 
-          <div class="col-5">
+          <div class="col-md-4">
               <label for="numero_serie_servico" class="form-label">Número de Série</label>
-              <input value="<?php if(isset($_GET['numero_serie_servico'])) : echo $_GET['numero_serie_servico']; endif; ?>" type="text" class="form-control" id="numero_serie_servico" name="numero_serie_servico" required>
+              <input tabindex="1" value="<?php if(isset($_GET['numero_serie_servico'])) : echo $_GET['numero_serie_servico']; endif; ?>" type="text" class="form-control" id="numero_serie_servico" name="numero_serie_servico" required>
             </div>
-            <div class="col-5">
+            <div class="col-md-8">
+              <label for="defeito_servico" class="form-label">Problema</label>
+              <input tabindex="3" value="<?php if(isset($_GET['defeito_servico'])) : echo $_GET['defeito_servico']; endif; ?>" type="text" class="form-control" id="defeito_servico" name="defeito_servico" required>
+            </div>
+            <div class="col-md-4">
               <label for="modelo_servico" class="form-label">Modelo</label>
-              <select type="text" class="form-select" id="modelo_servico" name="modelo_servico">
+              <select tabindex="2" type="text" class="form-select" id="modelo_servico" name="modelo_servico">
                 <?php
                   if(isset($_GET['modelo_servico'])) : echo "<option selected>" . $_GET['modelo_servico'] . "</option>"; endif;
                 ?>
@@ -66,13 +72,9 @@ include("../php/verifica_login.php");
                 <option>DGP8550EX</option>
               </select>
             </div>
-            <div class="col-10">
-              <label for="defeito_servico" class="form-label">Problema</label>
-              <input value="<?php if(isset($_GET['defeito_servico'])) : echo $_GET['defeito_servico']; endif; ?>" type="text" class="form-control" id="defeito_servico" name="defeito_servico" required>
-            </div>
-            <div class="col-10">
+            <div class="col-md-8">
               <label for="solucao_servico" class="form-label">Solução</label>
-              <input value="<?php if(isset($_GET['solucao_servico'])) : echo $_GET['solucao_servico']; endif; ?>" type="text" class="form-control" id="solucao_servico" name="solucao_servico" required>
+              <input tabindex="4" value="<?php if(isset($_GET['solucao_servico'])) : echo $_GET['solucao_servico']; endif; ?>" type="text" class="form-control" id="solucao_servico" name="solucao_servico" required>
             </div>
 
             <div class="col-md-9 row justify-content-end mt-5">

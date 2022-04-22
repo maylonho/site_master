@@ -23,9 +23,8 @@ session_start();
         <!-- Tabs Titles -->
     
         <!-- Icon -->
-        <div class="imgLogo d-flex" style="width: 100px;">
-          <img src="../imgs/logo_moto.jpg" id="icon" alt="User Icon"/>
-          <h5>Master ADM SGI</h5>
+        <div class="imgLogo d-flex" style="width: 140px; height:70px;">
+          <img src="../imgs/master_sgi.png" id="icon" alt="User Icon"/>
         </div>
         <div class="row">
           <?php if(isset($_SESSION['usuario_invalido'])) : ?>
