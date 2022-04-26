@@ -41,7 +41,7 @@
             $conexao->close();
             
             $tarefas->enviarEmailTarefa("tecnica@masterradios.com.br", $usuario_logado);
-            //$tarefas->enviarEmailTarefa("sgi@masterradios.com.br", $usuario_logado);
+            $tarefas->enviarEmailTarefa("sgi@masterradios.com.br", $usuario_logado);
 
             header('Location:../pages/cadTarefas.php');
             exit;

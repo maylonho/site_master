@@ -5,7 +5,7 @@
 
     $id_servico = mysqli_real_escape_string($conexao, trim($_GET['id_servico']));
     $modelo_servico = mysqli_real_escape_string($conexao, trim($_POST['modelo_servico']));
-    $numero_serie_servico = mysqli_real_escape_string($conexao, trim($_POST['numero_serie_servico']));
+    $numero_serie_servico = strtoupper(mysqli_real_escape_string($conexao, trim($_POST['numero_serie_servico'])));
     $defeito_servico = mysqli_real_escape_string($conexao, trim($_POST['defeito_servico']));
     $solucao_servico = mysqli_real_escape_string($conexao, trim($_POST['solucao_servico']));
 

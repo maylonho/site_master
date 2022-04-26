@@ -23,7 +23,7 @@ session_start();
         <!-- Tabs Titles -->
     
         <!-- Icon -->
-        <div class="imgLogo d-flex" style="width: 140px; height:70px;">
+        <div class="imgLogo d-flex justify-content-center" style="width: 300px;">
           <img src="../imgs/master_sgi.png" id="icon" alt="User Icon"/>
         </div>
         <div class="row">
