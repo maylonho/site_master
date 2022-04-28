@@ -83,12 +83,19 @@ $tarefas = new Tarefas();
 
                 <?php
                   if(isset($_GET['modo']) && $_GET['modo'] == 'editar') :
-                    $btn_excluir = "";
-                    if($_SESSION['usuario_logado'] !== "MAYLON") : $btn_excluir = "disabled"; endif;
+                    $btn_off = ""; 
+                    if($_SESSION['usuario_logado'] !== "MAYLON") : $btn_off = "disabled"; endif;
                   ?>
-                    <button <?php echo $btn_excluir ?> type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="definirDadosModal('Confimação', 'Tem certeza que deseja excluir a Tarefa?')">Excluir</button>
+                    <button <?php echo $btn_off ?> type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="definirDadosModal('Confimação', 'Tem certeza que deseja excluir a Tarefa?')">Excluir</button>
                     <button type='submit' name='salvar' class='btn btn-primary '>Salvar</button>
-                    <button type='submit' name='finalizar' class='btn btn-success '>Finalizar</button>
+
+                    <?php 
+                      $finaliza_off = "";
+                      if (mb_strpos($_GET['finalizado_tarefa'], $_SESSION['usuario_logado']) !== false && $_SESSION['usuario_logado'] !== "ANIBAL") {
+                        $finaliza_off = "disabled";
+                      }
+                    ?>
+                    <button <?php echo $finaliza_off; ?> type='submit' name='finalizar' class='btn btn-success '>Finalizar</button>
 
 
 

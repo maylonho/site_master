@@ -14,6 +14,10 @@ if ($_SESSION['pg'] == 'home') {
   $pg6 = "active";
 }
 
+
+$ocultar_elemento = ""; 
+if($_SESSION['usuario_logado'] !== "MAYLON") : $ocultar_elemento = "d-none"; endif;
+
 ?>
 <nav class="navbar sticky-top navbar-expand-lg navbar-dark bg-secondary">
   <div class="container-fluid">
@@ -43,7 +47,8 @@ if ($_SESSION['pg'] == 'home') {
             MANUTENÇÃO
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-            <li><a class="dropdown-item <?php echo $pg6;?>" href="cadManut.php">Cadastrar Manutenção</a></li>
+
+            <li><a class="dropdown-item <?php echo $ocultar_elemento ." ". $pg6;?>" href="cadManut.php">Cadastrar Manutenção</a></li>
             <li><a class="dropdown-item <?php echo $pg4;?>" href="listManut.php">Listar Manutenção</a></li>
           </ul>
         </li>

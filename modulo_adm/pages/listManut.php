@@ -70,7 +70,11 @@ $tarefas = new Servicos();
               </div>
               <div class="col-md-3 mt-5">
                   <div class="d-flex justify-content-end">
-                      <button type="button" class="btn btn-danger" onclick="location.href='cadManut.php'"><img src="../imgs/add-branco.png" width="20px"> Criar</button>
+                      <?php
+                        $btn_off = ""; 
+                        if($_SESSION['usuario_logado'] !== "MAYLON") : $btn_off = "disabled"; endif;
+                      ?>
+                      <button <?php echo $btn_off ?> type="button" class="btn btn-danger" onclick="location.href='cadManut.php'"><img src="../imgs/add-branco.png" width="20px"> Criar</button>
                   </div>
               </div>
 

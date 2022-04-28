@@ -59,7 +59,7 @@ class Tarefas {
                 if (mb_strpos($finalizado_tarefa, "ANIBAL") !== false) {
                     $img_status .= "<img src='../imgs/status/cor_anibal.png' width='20px'>";
                 }
-                if ($grau_conclusao > 4) {
+                if ($grau_conclusao > 5) {
                     $img_status .= "<img src='../imgs/status/cor_concluido.png' width='20px'>";
                 }
             }else{
@@ -135,6 +135,7 @@ class Tarefas {
         echo "</tbody>
         </table>";
     }//fecha funcao listarComentTarefas
+
     
     public function enviarEmailTarefa($email_destino_t, $usuario_envia){
         //1 – Definimos Para quem vai ser enviado o email

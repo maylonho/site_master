@@ -49,7 +49,7 @@ $_SESSION['pg'] = "estoque";
             <h5>PRO5150<br/> UHF: 5 <br/> VHF: 4 </h5>
           </div>
           <div class="produto_item" onclick="window.location.href = 'pgs/dgp4150.html'">
-            <img src="../imgs/radios/DGP4150.webp" alt="">
+            <img src="../imgs/radios/DGP4150.jpg" alt="">
             <h5>DGP4150<br/> UHF: 5 <br/> VHF: 4 </h5>
           </div>
           <div class="produto_item" onclick="window.location.href = 'pgs/dgp5050.html'">

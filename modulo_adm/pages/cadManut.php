@@ -43,20 +43,22 @@ $_SESSION['pg'] = "cadManut";
           if(isset($_GET['id_servico'])){
             $id_servico = "?id_servico=". $_GET['id_servico'];
           }
+          $inputoff = ""; 
+          if($_SESSION['usuario_logado'] !== "MAYLON") : $inputoff = "readonly"; endif;
         ?>
           <form class="row g-3" method="POST" action="../php/proc_manut.php<?php echo $id_servico; ?>">
 
           <div class="col-md-4">
               <label for="numero_serie_servico" class="form-label">Número de Série</label>
-              <input tabindex="1" value="<?php if(isset($_GET['numero_serie_servico'])) : echo $_GET['numero_serie_servico']; endif; ?>" type="text" class="form-control" id="numero_serie_servico" name="numero_serie_servico" required>
+              <input <?php echo $inputoff; ?>  tabindex="1" value="<?php if(isset($_GET['numero_serie_servico'])) : echo $_GET['numero_serie_servico']; endif; ?>" type="text" class="form-control" id="numero_serie_servico" name="numero_serie_servico" required>
             </div>
             <div class="col-md-8">
               <label for="defeito_servico" class="form-label">Problema</label>
-              <input tabindex="3" value="<?php if(isset($_GET['defeito_servico'])) : echo $_GET['defeito_servico']; endif; ?>" type="text" class="form-control" id="defeito_servico" name="defeito_servico" required>
+              <input <?php echo $inputoff; ?>  tabindex="3" value="<?php if(isset($_GET['defeito_servico'])) : echo $_GET['defeito_servico']; endif; ?>" type="text" class="form-control" id="defeito_servico" name="defeito_servico" required>
             </div>
             <div class="col-md-4">
               <label for="modelo_servico" class="form-label">Modelo</label>
-              <select tabindex="2" type="text" class="form-select" id="modelo_servico" name="modelo_servico">
+              <select disable  tabindex="2" type="text" class="form-select" id="modelo_servico" name="modelo_servico">
                 <?php
                   if(isset($_GET['modelo_servico'])) : echo "<option selected>" . $_GET['modelo_servico'] . "</option>"; endif;
                 ?>
@@ -74,7 +76,7 @@ $_SESSION['pg'] = "cadManut";
             </div>
             <div class="col-md-8">
               <label for="solucao_servico" class="form-label">Solução</label>
-              <input tabindex="4" value="<?php if(isset($_GET['solucao_servico'])) : echo $_GET['solucao_servico']; endif; ?>" type="text" class="form-control" id="solucao_servico" name="solucao_servico" required>
+              <input <?php echo $inputoff; ?>  tabindex="4" value="<?php if(isset($_GET['solucao_servico'])) : echo $_GET['solucao_servico']; endif; ?>" type="text" class="form-control" id="solucao_servico" name="solucao_servico" required>
             </div>
 
             <div class="col-md-9 row justify-content-end mt-5">
@@ -82,7 +84,7 @@ $_SESSION['pg'] = "cadManut";
                 <div class="col-auto">
 
                 <?php
-                  if(isset($_GET['modo']) && $_GET['modo'] == 'editar') :
+                  if(isset($_GET['modo']) && $_GET['modo'] == 'editar' && $_SESSION['usuario_logado'] == "MAYLON") :
                   ?>
                           <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="definirDadosModal('Confimação', 'Tem certeza que deseja excluir a Tarefa?')">Excluir</button>
                           <button type='submit' name='salvar' class='btn btn-primary '>Salvar</button>
