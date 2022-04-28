@@ -12,7 +12,7 @@ class Servicos {
             <tr>
                 <th scope='col'>Data</th>
                 <th scope='col'>Modelo</th>
-                <th scope='col'>N° Sério</th>
+                <th scope='col'>N° Série</th>
                 <th scope='col'>Defeito</th>
                 <th scope='col'>Solução</th>
             </tr>

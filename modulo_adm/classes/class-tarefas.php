@@ -13,7 +13,6 @@ class Tarefas {
                 <th scope='col'>Data</th>
                 <th scope='col'>Nome</th>
                 <th scope='col'>Prioridade</th>
-                <th scope='col'>Criado por:</th>
                 <th scope='col'>Status</th>
                 <th scope='col'> </th>
             </tr>
@@ -94,7 +93,6 @@ class Tarefas {
                     <td>".$data_tarefa."</td>
                     <td>".$nome_tarefa."</td>
                     <td>".$urgencia_tarefa."</td>
-                    <td>".$criador_tarefa."</td>
                     <td>".$img_status."</td>
                     <td>".$qtd_coment. " <img src='../imgs/coment.png' width='25px'></td>
                 </tr>
