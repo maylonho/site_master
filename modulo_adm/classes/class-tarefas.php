@@ -28,6 +28,7 @@ class Tarefas {
             $urgencia_tarefa = $row['urgencia_tarefa'];
             $criador_tarefa = $row['criador_tarefa'];
             $grau_conclusao = $row['grau_conclusao'];
+            $status_tarefa = $row['status_tarefa'];
             $finalizado_tarefa = $row['finalizado_tarefa'];
             $img_status = "";
             $usuario_logado = $_SESSION['usuario_logado'];
@@ -41,27 +42,15 @@ class Tarefas {
 
 
             if($finalizado_tarefa !== ""){
-                if (mb_strpos($finalizado_tarefa, "MAYLON") !== false) {
-                    $img_status .= "<img src='../imgs/status/cor_maylon.png' width='20px'>";
+                for($i=0; $i<6; $i++){
+                    if (mb_strpos($status_tarefa, "$i") !== false) {
+                        $img_status .= "<img src='../imgs/status/cor_".$i.".png' width='20px'>";
+                    }
                 }
-                if (mb_strpos($finalizado_tarefa, "ISABELA") !== false) {
-                    $img_status .= "<img src='../imgs/status/cor_isabela.png' width='20px'>";
-                }
-                if (mb_strpos($finalizado_tarefa, "EMILY") !== false) {
-                    $img_status .= "<img src='../imgs/status/cor_emily.png' width='20px'>";
-                }
-                if (mb_strpos($finalizado_tarefa, "KAROL") !== false) {
-                    $img_status .= "<img src='../imgs/status/cor_karol.png' width='20px'>";
-                }
-                if (mb_strpos($finalizado_tarefa, "ELIANA") !== false) {
-                    $img_status .= "<img src='../imgs/status/cor_eliana.png' width='20px'>";
-                }
-                if (mb_strpos($finalizado_tarefa, "ANIBAL") !== false) {
-                    $img_status .= "<img src='../imgs/status/cor_anibal.png' width='20px'>";
-                }
-                if ($grau_conclusao > 5) {
-                    $img_status .= "<img src='../imgs/status/cor_concluido.png' width='20px'>";
-                }
+                    if ($grau_conclusao > 5) {
+                        $img_status .= "<img src='../imgs/status/cor_concluido.png' width='20px'>";
+                    }
+
             }else{
                 $img_status = "<img src='../imgs/status/nivel_0.png' width='100px'>";
             }

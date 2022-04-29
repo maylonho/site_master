@@ -16,7 +16,7 @@ class Anotacoes {
      
             echo 
             "
-            <div class='col-sm-6 col-md-3 col-lg-2 col-xxl-1'>
+            <div class='col-sm-6 col-md-3 col-lg-2 col-xxl-2'>
         
                 <div class='card mb-5 bg-".$cor_anotacao." text-light'>
                     <form action='../php/proc_notas.php' method='POST'>

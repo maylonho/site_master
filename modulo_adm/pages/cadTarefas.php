@@ -69,6 +69,11 @@ $tarefas = new Tarefas();
             </div>
 
             <?php
+              if(isset($_SESSION['edit_tarefa_erro'])){
+                echo $_SESSION['edit_tarefa_erro'];
+              }
+              unset($_SESSION['edit_tarefa_erro']);
+
               if(isset($_GET['finalizado_tarefa']) && $_GET['finalizado_tarefa']!="") :
             ?>
             <div class="row mt-4">

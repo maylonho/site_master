@@ -15,6 +15,7 @@
 
     
     $usuario_logado = $_SESSION['usuario_logado'];
+    $usuario_cor = $_SESSION['usuario_cor'];
 
     function get_post_action($name)
     {
@@ -65,12 +66,15 @@
                     $_SESSION['edit_tarefa_realizado'] = true;
                     echo "atualizacao ok";
                     header("Location:../pages/listTarefas.php");
+                }else{
+                    $_SESSION['edit_tarefa_erro'] = "<script>alert('Erro: Você precisa alterar algum campo para efetuar a alteração. \\nPara os comentários não é necessário clicar em salvar.');</script>";
+                    echo '<script>history.back();</script>';
                 }
             break;
 
 
         case 'finalizar':
-            $sql = "UPDATE `tarefas` SET `grau_conclusao`=grau_conclusao+1, finalizado_tarefa = concat(finalizado_tarefa, ', $usuario_logado')  WHERE  `id_tarefa`='$id_tarefa'";
+            $sql = "UPDATE `tarefas` SET `grau_conclusao`=grau_conclusao+1, finalizado_tarefa = concat(finalizado_tarefa, ', $usuario_logado'), status_tarefa = concat(status_tarefa, ', $usuario_cor')  WHERE  `id_tarefa`='$id_tarefa'";
             $result = mysqli_query($conexao, $sql);
             
                 if(mysqli_affected_rows($conexao)){
