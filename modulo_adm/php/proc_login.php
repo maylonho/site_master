@@ -14,10 +14,9 @@ $row = mysqli_fetch_assoc($result);
 
 if($row['COUNT(login_func)'] == 1){
     $_SESSION['usuario_logado'] = strtoupper($usuario);
-    $_SESSION['matricula_func_logado'] =  $row['matricula_func'];
     $_SESSION['usuario_cor'] =  $row['cor_func'];
-    $usuario_logado = $_SESSION['usuario_logado'];
-    setcookie("usuario_logado", $usuario_logado, time() + 7 * (24 * 3600), "/");
+    setcookie("usuario_logado", $_SESSION['usuario_logado'], time() + 7 * (24 * 3600), "/");
+    setcookie("usuario_cor", $_SESSION['usuario_cor'], time() + 7 * (24 * 3600), "/");
     header('Location:../pages/home.php');
 }else{
     $_SESSION['usuario_invalido'] = true;

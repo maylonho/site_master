@@ -89,7 +89,7 @@ $tarefas = new Tarefas();
                 <?php
                   if(isset($_GET['modo']) && $_GET['modo'] == 'editar') :
                     $btn_off = ""; 
-                    if($_SESSION['usuario_logado'] !== "MAYLON") : $btn_off = "disabled"; endif;
+                    if($_SESSION['usuario_logado'] !== "ADMIN") : $btn_off = "disabled"; endif;
                   ?>
                     <button <?php echo $btn_off ?> type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="definirDadosModal('Confimação', 'Tem certeza que deseja excluir a Tarefa?')">Excluir</button>
                     <button type='submit' name='salvar' class='btn btn-primary '>Salvar</button>
