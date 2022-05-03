@@ -23,7 +23,7 @@
 
     switch (get_post_action('cadastrar', 'excluir')) {
         case 'cadastrar':
-            $sql = "INSERT INTO anotacoes (criador_anotacao, titulo_anotacao, texto_anotacao, cor_anotacao) VALUES ('$usuario_logado', '$titulo_anotacao', '$texto_anotacao', '$cor_anotacao')";
+            $sql = "INSERT INTO anotacoes (data_anotacao, criador_anotacao, titulo_anotacao, texto_anotacao, cor_anotacao, visualizado_anotacao) VALUES (NOW(), '$usuario_logado', '$titulo_anotacao', '$texto_anotacao', '$cor_anotacao', 0)";
             if($conexao->query($sql) === TRUE) {
                 $_SESSION['cad_notas_realizado'] = true;
             }else{
@@ -37,7 +37,7 @@
             break;
 
         case 'excluir':
-            $sql = "DELETE FROM anotacoes WHERE `id_anotacao`='$id_anotacao'";
+            $sql = "UPDATE `anotacoes` SET `visualizado_anotacao`=1 WHERE `id_anotacao`='$id_anotacao'";
             $result = mysqli_query($conexao, $sql);
             
                 if(mysqli_affected_rows($conexao)){
@@ -46,6 +46,17 @@
                 }
             break;
 
+        /*
+        case 'excluir':
+            $sql = "DELETE FROM anotacoes WHERE `id_anotacao`='$id_anotacao'";
+            $result = mysqli_query($conexao, $sql);
+            
+                if(mysqli_affected_rows($conexao)){
+                    $_SESSION['excluir_notas_realizado'] = true;
+                    header("Location:../pages/home.php");
+                }
+            break;
+        */
 
         default:
             echo "defaut";

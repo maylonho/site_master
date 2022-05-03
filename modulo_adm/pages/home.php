@@ -57,7 +57,7 @@ $anotacoes = new Anotacoes();
         
         <?php
           if(isset($_SESSION['usuario_logado'])){
-            $anotacoes->listarNotas("SELECT * FROM anotacoes WHERE criador_anotacao='$usuario_logado'");
+            $anotacoes->listarNotas("SELECT * FROM anotacoes WHERE criador_anotacao='$usuario_logado' AND visualizado_anotacao=0");
           }
 
         ?>
