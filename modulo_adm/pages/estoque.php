@@ -51,7 +51,7 @@ $_SESSION['pg'] = "estoque";
             }
           ?>
 
-          <div class="col-12">
+          <div class="col-12 mt-5">
             <h3 style="text-align: left;"> - Rádios de VHF</h3>
           </div>
           <?php

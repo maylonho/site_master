@@ -34,9 +34,15 @@ class Estoque {
 
                 <script>
                     $('#form_equip".$id_equip."').css('display','none');
-                    $('#equip".$id_equip."').click(function() {
+                    $('#equip".$id_equip."').mouseenter(function() {
                         $('#form_equip".$id_equip."').css('display','flex');
                         $('#info".$id_equip."').css('display','none');
+                    })
+
+                    
+                    $('#equip".$id_equip."').mouseleave(function() {
+                        $('#form_equip".$id_equip."').css('display','none');
+                        $('#info".$id_equip."').css('display','flex');
                     })
                 </script>
 

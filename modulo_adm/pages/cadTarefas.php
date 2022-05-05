@@ -170,7 +170,7 @@ $tarefas = new Tarefas();
             </div>
           </form>
           <?php
-              $tarefas->listarComentTarefas("SELECT *,date_format(`data_comentario`,'%d/%m/%Y - %H:%i') as `data_comentario` FROM comentario_tarefas WHERE id_tarefa='$id_tarefa_coment' ORDER BY data_comentario DESC");
+              $tarefas->listarComentTarefas("SELECT *,date_format(`data_comentario`,'%d/%m/%Y - %H:%i') as `data_comentario` FROM comentario_tarefas WHERE id_tarefa='$id_tarefa_coment' ORDER BY id_comentario DESC");
             }
           ?>
         </div>

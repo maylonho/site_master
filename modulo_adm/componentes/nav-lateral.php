@@ -2,7 +2,7 @@
 
 ?>
 
-<nav id="navbarVertical" class="navbar navbar-light bg-light" style="height: 80vh; border-right: 1px solid #aaa;">
+<nav id="navbarVertical" class="navbar navbar-light bg-light d-none d-sm-flex" style="height: 80vh; border-right: 1px solid #aaa;">
                 
     <nav class="nav nav-pills flex-column col-12">
     

@@ -153,6 +153,47 @@ class Tarefas {
     
         $envio = mail($para, $assunto, $mensagem, $header);  //função que faz o envio do email.
     }
+
+    public function enviarEmailTarefaTodos($usuario_envia){
+        //1 – Definimos Para quem vai ser enviado o email
+        $paraAnibal = "anibal@masterradios.com.br";
+        $paraMaylon = "tecnica@masterradios.com.br";
+        $paraEmily = "emily@masterradios.com.br";
+        $paraEliana = "eliana@masterradios.com.br";
+        $paraKarol = "karoline@masterradios.com.br";
+        $paraIsabela = "isabela@masterradios.com.br";
+
+        $remetente = "nao-responder@masterradios.com.br";
+
+        //2 - resgatar os campos digitados no formulário e grava nas variaveis
+    
+        $assunto = "NOVA TAREFA CRIADA POR " . $usuario_envia;
+        $nome_tarefa = $_POST['nome_tarefa'];
+        $descricao_tarefa = $_POST['descricao_tarefa'];
+        $urgencia_tarefa = $_POST['urgencia_tarefa'];
+    
+        //4 – Agora definimos a  mensagem que vai ser enviado no e-mail
+    
+        $mensagem = "<strong>Tarefa: </strong>".$nome_tarefa;
+        $mensagem .= "<br><br><br>  <strong>Descrição: </strong>".$descricao_tarefa;
+        $mensagem .= "<br>          <strong>A tarefa tem prioridade: </strong>".$urgencia_tarefa;
+        $mensagem .= "<br><br><br>  <strong>Master Radiocomunicação </strong>";
+        $mensagem .= "<br>          <strong>Este e-mail foi enviado do Sistema ADM Interno</strong>";
+        $mensagem .= "<br>          Não respoder esse email, email automatico.";
+    
+        $header = "MIME-Version: 1.0\n";
+        $header .= "Content-type: text/html; charset=utf-8\n";
+        $header .= "from: $remetente\n";
+    
+        $envio = mail($paraAnibal, $assunto, $mensagem, $header);  //função que faz o envio do email.
+        $envio = mail($paraMaylon, $assunto, $mensagem, $header);  //função que faz o envio do email.
+        $envio = mail($paraEmily, $assunto, $mensagem, $header);  //função que faz o envio do email.
+        $envio = mail($paraEliana, $assunto, $mensagem, $header);  //função que faz o envio do email.
+        $envio = mail($paraKarol, $assunto, $mensagem, $header);  //função que faz o envio do email.
+        $envio = mail($paraIsabela, $assunto, $mensagem, $header);  //função que faz o envio do email.
+    }
+
+
     
 }
 

@@ -16,7 +16,7 @@ if($row['COUNT(login_func)'] == 1){
     $_SESSION['usuario_logado'] = strtoupper($usuario);
     $_SESSION['usuario_cor'] =  $row['cor_func'];
     setcookie("usuario_logado", $_SESSION['usuario_logado'], time() + 7 * (24 * 3600), "/");
-    setcookie("usuario_cor", $_SESSION['usuario_cor'], time() + 7 * (24 * 3600), "/");
+    setcookie("usuario_cor", $_SESSION['usuario_cor'], time() + 8 * (24 * 3600), "/");
     header('Location:../pages/home.php');
 }else{
     $_SESSION['usuario_invalido'] = true;

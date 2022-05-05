@@ -50,7 +50,7 @@ $_SESSION['pg'] = "cadManut";
 
           <div class="col-md-4">
               <label for="numero_serie_servico" class="form-label">Número de Série</label>
-              <input <?php echo $inputoff; ?>  tabindex="1" value="<?php if(isset($_GET['numero_serie_servico'])) : echo $_GET['numero_serie_servico']; endif; ?>" type="text" class="form-control" id="numero_serie_servico" name="numero_serie_servico" required>
+              <input autofocus <?php echo $inputoff; ?>  tabindex="1" value="<?php if(isset($_GET['numero_serie_servico'])) : echo $_GET['numero_serie_servico']; endif; ?>" type="text" class="form-control" id="numero_serie_servico" name="numero_serie_servico" required>
             </div>
             <div class="col-md-8">
               <label for="defeito_servico" class="form-label">Problema</label>
@@ -72,6 +72,7 @@ $_SESSION['pg'] = "cadManut";
                 <option>DGP8550</option>
                 <option>DGP8050EX</option>
                 <option>DGP8550EX</option>
+                <option>PD506</option>
               </select>
             </div>
             <div class="col-md-8">

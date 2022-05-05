@@ -8,7 +8,7 @@ if(!isset($_SESSION['usuario_logado']) && !isset($_COOKIE["usuario_logado"])){
     header('Location:../pages/login.php');
 }
 
-/*
+/* 
 
 if(!isset($_SESSION['usuario_logado']) ){
     header('Location:../pages/login.php');

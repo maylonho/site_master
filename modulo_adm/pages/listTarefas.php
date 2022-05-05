@@ -86,11 +86,11 @@ $tarefas = new Tarefas();
               <?php
 
                 if(!isset($_GET['nome']) && !isset($_GET['mostrar'])){
-                  $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas WHERE grau_conclusao<6 ORDER BY data_tarefa DESC");
+                  $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas WHERE grau_conclusao<6 ORDER BY id_tarefa DESC");
                 }
                 if (isset($_GET['nome'])) {
                   $nome_tarefa = $_GET['nome'];
-                  $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas WHERE nome_tarefa like '%$nome_tarefa%' ORDER BY data_tarefa DESC");
+                  $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas WHERE nome_tarefa like '%$nome_tarefa%' ORDER BY id_tarefa DESC");
                 }              
                 if (isset($_GET['mostrar'])) {
                   $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas ORDER BY data_tarefa DESC");
