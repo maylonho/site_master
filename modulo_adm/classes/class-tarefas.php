@@ -10,9 +10,9 @@ class Tarefas {
         <table class='table'>
             <thead>
             <tr>
-                <th class='d-none d-sm-flex' scope='col'>Data</th>
+                <th class='d-none d-sm-table-cell' scope='col'>Data</th>
                 <th scope='col'>Nome</th>
-                <th class='d-none d-sm-flex' scope='col'>Prioridade</th>
+                <th class='d-none d-sm-table-cell' scope='col'>Prioridade</th>
                 <th scope='col'>Status</th>
                 <th scope='col'> </th>
             </tr>
@@ -44,7 +44,8 @@ class Tarefas {
             if($finalizado_tarefa !== ""){
                 for($i=0; $i<6; $i++){
                     if (mb_strpos($status_tarefa, "$i") !== false) {
-                        $img_status .= "<img src='../imgs/status/cor_".$i.".png' width='20px'>";
+                        $cor_ar = array("f00", "ff0", "f0f", "f80", "00f", "000");
+                        $img_status .= "<div style='background-color: #".$cor_ar[$i]."; width: 20px; height: 20px; border-radius: 100px;'> &nbsp </div>";
                     }
                 }
                     if ($grau_conclusao > 5) {
@@ -52,7 +53,7 @@ class Tarefas {
                     }
 
             }else{
-                $img_status = "<img src='../imgs/status/nivel_0.png' width='100px'>";
+                $img_status = "<div style='background-color: #ddd; width: 20px; height: 20px; border-radius: 100px;'> &nbsp </div>";
             }
 
             
@@ -75,14 +76,18 @@ class Tarefas {
                 $cor_linha = "";
                 $corlinhaoff = "linha_tabela_urgente";
             }
-            
+   
             echo 
             "
                 <tr class='linha_tabela $cor_linha' onmouseover=setAttribute('id','$corlinhaon') onmouseout=setAttribute('id','$corlinhaoff') onclick=location.href='cadTarefas.php?$linkedit'>
-                    <td class='d-none d-sm-flex'>".$data_tarefa."</td>
+                    <td class='d-none d-sm-table-cell'>".$data_tarefa."</td>
                     <td>".$nome_tarefa."</td>
-                    <td class='d-none d-sm-flex'>".$urgencia_tarefa."</td>
-                    <td>".$img_status."</td>
+                    <td class='d-none d-sm-table-cell'>".$urgencia_tarefa."</td>
+                    <td>
+                        <div class='d-flex'>
+                            ". $img_status ."
+                        </div>
+                    </td>
                     <td>".$qtd_coment. " <img src='../imgs/coment.png' width='25px'></td>
                 </tr>
             

@@ -97,7 +97,7 @@ $log->cadLog("Acessou a página Lista de Tarefas");
                   $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas WHERE nome_tarefa like '%$nome_tarefa%' ORDER BY id_tarefa DESC");
                 }              
                 if (isset($_GET['mostrar'])) {
-                  $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas ORDER BY data_tarefa DESC");
+                  $tarefas->listarTarefas("SELECT *,date_format(`data_tarefa`,'%d/%m/%Y - %H:%i') as `data_tarefa` FROM tarefas ORDER BY id_tarefa DESC");
                 }
                 ?>
                   
