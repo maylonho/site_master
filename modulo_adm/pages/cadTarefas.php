@@ -4,6 +4,9 @@ include("../classes/class-tarefas.php");
 include("../php/verifica_login.php");
 $_SESSION['pg'] = "cadTarefas"; 
 $tarefas = new Tarefas();
+
+include("../classes/class-log.php");
+$log->cadLog("Acessou a página Cadastro de Tarefas");
 ?>
 
 <!DOCTYPE html>

@@ -10,9 +10,9 @@ class Tarefas {
         <table class='table'>
             <thead>
             <tr>
-                <th scope='col'>Data</th>
+                <th class='d-none d-sm-flex' scope='col'>Data</th>
                 <th scope='col'>Nome</th>
-                <th scope='col'>Prioridade</th>
+                <th class='d-none d-sm-flex' scope='col'>Prioridade</th>
                 <th scope='col'>Status</th>
                 <th scope='col'> </th>
             </tr>
@@ -79,9 +79,9 @@ class Tarefas {
             echo 
             "
                 <tr class='linha_tabela $cor_linha' onmouseover=setAttribute('id','$corlinhaon') onmouseout=setAttribute('id','$corlinhaoff') onclick=location.href='cadTarefas.php?$linkedit'>
-                    <td>".$data_tarefa."</td>
+                    <td class='d-none d-sm-flex'>".$data_tarefa."</td>
                     <td>".$nome_tarefa."</td>
-                    <td>".$urgencia_tarefa."</td>
+                    <td class='d-none d-sm-flex'>".$urgencia_tarefa."</td>
                     <td>".$img_status."</td>
                     <td>".$qtd_coment. " <img src='../imgs/coment.png' width='25px'></td>
                 </tr>

@@ -4,6 +4,10 @@ include("../classes/class-tarefas.php");
 include("../php/verifica_login.php");
 $_SESSION['pg'] = "listTarefas"; 
 $tarefas = new Tarefas();
+
+
+include("../classes/class-log.php");
+$log->cadLog("Acessou a página Lista de Tarefas");
 ?>
 
 <!DOCTYPE html>
@@ -42,19 +46,19 @@ $tarefas = new Tarefas();
           <div class="container mt-3">
             <form class="row g-3 justify-content-between" action="listTarefas.php" method="GET">
           
-              <div class="col-md-3">
+              <div class="col-8 col-md-3">
                 <label for="data-inicial" class="form-label">Nome da Tarefa</label>
                 <input type="text" class="form-control" id="nome" name="nome">
               </div>
-              <div class="col-md-3 row justify-content-start mt-5">
+              <div class="col-4 col-md-3 row justify-content-end justify-content-md-start mt-5">
                   <div class="col-auto">
                       <button type="submit" class="btn btn-primary">Pesquisar</button>
                   </div>
               </div>
-              <div class="col-md-3 mt-5 text-end">
+              <div class="col-7 col-md-3 mt-5 text-end">
                   <div><a href="?mostrar=all">Mostrar tarefas finalizadas</a></div>
               </div>
-              <div class="col-md-3 row justify-content-end mt-5">
+              <div class="col-5 col-md-3 row justify-content-end mt-5">
                   <div class="col-auto">
                       <button type="button" class="btn btn-danger" onclick="location.href='cadTarefas.php'"><img src="../imgs/add-branco.png" width="20px"> Criar</button>
                   </div>

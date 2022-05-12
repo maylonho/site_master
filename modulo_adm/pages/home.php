@@ -6,6 +6,10 @@ $_SESSION['pg'] = "home";
 include("../classes/class-anotacoes.php");
 $anotacoes = new Anotacoes();
 
+
+include("../classes/class-log.php");
+$log->cadLog("Acessou a página Home");
+
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">

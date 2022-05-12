@@ -1,5 +1,7 @@
 <?php
 include("../php/conexao.php");
+include("../classes/class-log.php");
+
 session_start();
 
 $usuario = mysqli_real_escape_string($conexao ,trim($_POST['login']));
@@ -10,17 +12,20 @@ $result = mysqli_query($conexao, $sql);
 $row = mysqli_fetch_assoc($result);
 
 
-
-
 if($row['COUNT(login_func)'] == 1){
     $_SESSION['usuario_logado'] = strtoupper($usuario);
     $_SESSION['usuario_cor'] =  $row['cor_func'];
     setcookie("usuario_logado", $_SESSION['usuario_logado'], time() + 7 * (24 * 3600), "/");
     setcookie("usuario_cor", $_SESSION['usuario_cor'], time() + 8 * (24 * 3600), "/");
     header('Location:../pages/home.php');
+
+    $log->cadLog("Efetuou login com sucesso");
 }else{
     $_SESSION['usuario_invalido'] = true;
     header('Location:../pages/login.php');
+
+    
+    $log->cadLog_erro("Não conseguiu efetuar login", $usuario);
 }
 
 ?>

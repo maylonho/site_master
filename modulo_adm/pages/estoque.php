@@ -5,6 +5,9 @@ include("../php/verifica_login.php");
 include("../classes/class-estoque.php");
 $estoque = new Estoque();
 $_SESSION['pg'] = "estoque"; 
+
+include("../classes/class-log.php");
+$log->cadLog("Acessou a página Estoque");
 ?>
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -37,35 +40,68 @@ $_SESSION['pg'] = "estoque";
       <!--CORPO DO SITE PRINCIPAL-->
       <div class="col-sm-8 col-md-9 col-lg-10" style="background-color: rgb(255, 255, 255); height: 50vh;">
 
+        <?php
+          // Codigo para pegar a url completa
+          //$url = "http://" . $_SERVER['SERVER_NAME'] . 
+          //$_SERVER['REQUEST_URI'];
+
+          if(!isset($_SESSION['var_estoq_view'])) : $_SESSION['var_estoq_view'] = "disp"; endif;
+          if(!isset($_SESSION['var_estoq_modo'])) : $_SESSION['var_estoq_modo'] = "bloco"; endif;
+
+          if(isset($_GET['view'])) : $_SESSION['var_estoq_view'] = $_GET['view']; endif;
+          if(isset($_GET['modo'])) : $_SESSION['var_estoq_modo'] = $_GET['modo']; endif;
+
+        ?>
         <div class="produtos">
-          <a href="?view=all">Mostrar todos os produtos</a>-----
-          <a href="?#">Mostrar apenas disponiveis</a>
+          <a href="?view=all&modo=<?php echo $_SESSION['var_estoq_modo']; ?>">Mostrar todos os produtos</a>-----
+          <a href="?view=disp&modo=<?php echo $_SESSION['var_estoq_modo']; ?>">Mostrar apenas disponiveis</a>-----
+          <a href="?view=<?php echo $_SESSION['var_estoq_view']; ?>&modo=lista">Ver em Lista</a>-----
+          <a href="?view=<?php echo $_SESSION['var_estoq_view']; ?>&modo=bloco">Ver em Bloco</a>
           <div class="col-12">
             <h3 style="text-align: left;"> - Rádios de UHF</h3>
           </div>
           <?php
-            if(isset($_GET['view']) && $_GET['view'] == "all"){
-              $estoque->listarEquipamentos("SELECT * FROM estoque WHERE tipo_equip='RADIO UHF'");
-            }else{
-              $estoque->listarEquipamentos("SELECT * FROM estoque WHERE tipo_equip='RADIO UHF' and qtd_equip>0");
+            if($_SESSION['var_estoq_view'] == "all"){
+              if($_SESSION['var_estoq_modo'] == "bloco"){
+                $estoque->listarEquipamentosBloco("SELECT * FROM estoque WHERE tipo_equip='RADIO UHF'");
+              }else{
+                $estoque->listarEquipamentosLista("SELECT * FROM estoque WHERE tipo_equip='RADIO UHF'");
+              }
             }
+            else{
+              if($_SESSION['var_estoq_modo'] == "bloco"){
+                $estoque->listarEquipamentosBloco("SELECT * FROM estoque WHERE tipo_equip='RADIO UHF' and qtd_equip>0");
+              }else{
+                $estoque->listarEquipamentosLista("SELECT * FROM estoque WHERE tipo_equip='RADIO UHF' and qtd_equip>0");
+              }
+            }
+
           ?>
 
           <div class="col-12 mt-5">
             <h3 style="text-align: left;"> - Rádios de VHF</h3>
           </div>
           <?php
-            if(isset($_GET['view']) && $_GET['view'] == "all"){
-              $estoque->listarEquipamentos("SELECT * FROM estoque WHERE tipo_equip='RADIO VHF'");
-            }else{
-              $estoque->listarEquipamentos("SELECT * FROM estoque WHERE tipo_equip='RADIO VHF' and qtd_equip>0");
+            if($_SESSION['var_estoq_view'] == "all"){
+              if($_SESSION['var_estoq_modo'] == "bloco"){
+                $estoque->listarEquipamentosBloco("SELECT * FROM estoque WHERE tipo_equip='RADIO VHF'");
+              }else{
+                $estoque->listarEquipamentosLista("SELECT * FROM estoque WHERE tipo_equip='RADIO VHF'");
+              }
+            }
+            else{
+              if($_SESSION['var_estoq_modo'] == "bloco"){
+                $estoque->listarEquipamentosBloco("SELECT * FROM estoque WHERE tipo_equip='RADIO VHF' and qtd_equip>0");
+              }else{
+                $estoque->listarEquipamentosLista("SELECT * FROM estoque WHERE tipo_equip='RADIO VHF' and qtd_equip>0");
+              }
             }
         
           ?>
 
           <!-- ATUALIZA O NUMERO DE RADIOS EM ESTOQUE -->
           <?php
-            if(isset($_GET['id_equip']) && isset($_GET['qtd_equip']) && isset($_GET['qtd_equip']) && isset($_GET['salvar_eq'])){
+            if(isset($_GET['id_equip']) && isset($_GET['qtd_equip']) && isset($_GET['salvar_eq'])){
               $estoque->updateEquipamento();
             }
           ?>

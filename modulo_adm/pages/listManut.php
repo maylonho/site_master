@@ -4,6 +4,9 @@ include("../classes/class-manutencao.php");
 include("../php/verifica_login.php");
 $_SESSION['pg'] = "listManut"; 
 $tarefas = new Servicos();
+
+include("../classes/class-log.php");
+$log->cadLog("Acessou a página Lista de Manutenções");
 ?>
 
 <!DOCTYPE html>
