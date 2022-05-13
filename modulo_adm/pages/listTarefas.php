@@ -56,7 +56,7 @@ $log->cadLog("Acessou a página Lista de Tarefas");
                   </div>
               </div>
               <div class="col-7 col-md-3 mt-5 text-end">
-                  <div><a href="?mostrar=all">Mostrar tarefas finalizadas</a></div>
+                  <div><a id="mostrar_all" href="?mostrar=all">Mostrar tarefas finalizadas</a></div>
               </div>
               <div class="col-5 col-md-3 row justify-content-end mt-5">
                   <div class="col-auto">

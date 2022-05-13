@@ -76,7 +76,7 @@ class Tarefas {
                 $cor_linha = "";
                 $corlinhaoff = "linha_tabela_urgente";
             }
-   
+    
             echo 
             "
                 <tr class='linha_tabela $cor_linha' onmouseover=setAttribute('id','$corlinhaon') onmouseout=setAttribute('id','$corlinhaoff') onclick=location.href='cadTarefas.php?$linkedit'>

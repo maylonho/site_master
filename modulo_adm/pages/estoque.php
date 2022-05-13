@@ -52,11 +52,19 @@ $log->cadLog("Acessou a página Estoque");
           if(isset($_GET['modo'])) : $_SESSION['var_estoq_modo'] = $_GET['modo']; endif;
 
         ?>
+        <div class="row mt-2">
+          <div class="col-8">
+            <a class="me-2" id="mostrar_tudo" href="?view=all&modo=<?php echo $_SESSION['var_estoq_modo']; ?>">Mostrar todos os produtos</a>
+            <a id="mostrar_disp" href="?view=disp&modo=<?php echo $_SESSION['var_estoq_modo']; ?>">Mostrar apenas disponiveis</a>
+          </div>
+          <div class="col-4 d-flex justify-content-end">
+            <a class="me-2" href="?view=<?php echo $_SESSION['var_estoq_view']; ?>&modo=lista"><img src="../imgs/lista.png" width="30px"></a>
+            <a href="?view=<?php echo $_SESSION['var_estoq_view']; ?>&modo=bloco"><img src="../imgs/blocos.png" width="30px"></a>
+          </div>
+        </div>
+
         <div class="produtos">
-          <a href="?view=all&modo=<?php echo $_SESSION['var_estoq_modo']; ?>">Mostrar todos os produtos</a>-----
-          <a href="?view=disp&modo=<?php echo $_SESSION['var_estoq_modo']; ?>">Mostrar apenas disponiveis</a>-----
-          <a href="?view=<?php echo $_SESSION['var_estoq_view']; ?>&modo=lista">Ver em Lista</a>-----
-          <a href="?view=<?php echo $_SESSION['var_estoq_view']; ?>&modo=bloco">Ver em Bloco</a>
+          
           <div class="col-12">
             <h3 style="text-align: left;"> - Rádios de UHF</h3>
           </div>
@@ -83,6 +91,7 @@ $log->cadLog("Acessou a página Estoque");
           </div>
           <?php
             if($_SESSION['var_estoq_view'] == "all"){
+              echo "<script>$('#mostrar_tudo').hide();</script>";
               if($_SESSION['var_estoq_modo'] == "bloco"){
                 $estoque->listarEquipamentosBloco("SELECT * FROM estoque WHERE tipo_equip='RADIO VHF'");
               }else{
@@ -90,6 +99,7 @@ $log->cadLog("Acessou a página Estoque");
               }
             }
             else{
+              echo "<script>$('#mostrar_disp').hide();</script>";
               if($_SESSION['var_estoq_modo'] == "bloco"){
                 $estoque->listarEquipamentosBloco("SELECT * FROM estoque WHERE tipo_equip='RADIO VHF' and qtd_equip>0");
               }else{

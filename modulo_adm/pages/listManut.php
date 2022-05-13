@@ -49,7 +49,7 @@ $log->cadLog("Acessou a página Lista de Manutenções");
                 <label for="n" class="form-label">Número de Série</label>
                 <input type="text" class="form-control" id="n" name="n">
               </div>
-              <div class="col-md-3 mt-5">
+              <div class="col-md-3 mt-md-5 mt-1 d-flex justify-content-end justify-content-md-start">
                 <button type="submit" class="btn btn-primary">Pesquisar</button>
               </div>
 
@@ -71,7 +71,7 @@ $log->cadLog("Acessou a página Lista de Manutenções");
                   <option value="all">Tudo</option>
                 </select>
               </div>
-              <div class="col-md-3 mt-5">
+              <div class="col-md-3 mt-md-5 mt-1">
                   <div class="d-flex justify-content-end">
                       <?php
                         $btn_off = ""; 
