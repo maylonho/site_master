@@ -41,8 +41,8 @@
 
             $conexao->close();
             
-            //$tarefas->enviarEmailTarefaTodos($usuario_logado);
-            $tarefas->enviarEmailTarefa("sgi@masterradios.com.br", $usuario_logado);
+            $tarefas->enviarEmailTarefaTodos($usuario_logado);
+            //$tarefas->enviarEmailTarefa("sgi@masterradios.com.br", $usuario_logado);
 
             
 

@@ -165,7 +165,7 @@ class Tarefas {
         $paraMaylon = "tecnica@masterradios.com.br";
         $paraEmily = "emily@masterradios.com.br";
         $paraEliana = "eliana@masterradios.com.br";
-        $paraKarol = "karoline@masterradios.com.br";
+        //$paraKarol = "karoline@masterradios.com.br";
         $paraIsabela = "isabela@masterradios.com.br";
 
         $remetente = "nao-responder@masterradios.com.br";
@@ -194,7 +194,7 @@ class Tarefas {
         $envio = mail($paraMaylon, $assunto, $mensagem, $header);  //função que faz o envio do email.
         $envio = mail($paraEmily, $assunto, $mensagem, $header);  //função que faz o envio do email.
         $envio = mail($paraEliana, $assunto, $mensagem, $header);  //função que faz o envio do email.
-        $envio = mail($paraKarol, $assunto, $mensagem, $header);  //função que faz o envio do email.
+        //$envio = mail($paraKarol, $assunto, $mensagem, $header);  //função que faz o envio do email.
         $envio = mail($paraIsabela, $assunto, $mensagem, $header);  //função que faz o envio do email.
     }
 
