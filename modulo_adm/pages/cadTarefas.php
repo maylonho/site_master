@@ -94,43 +94,43 @@ $log->cadLog("Acessou a página Cadastro de Tarefas");
                     $btn_off = ""; 
                     if($_SESSION['usuario_logado'] !== "ADMIN") : $btn_off = "disabled"; endif;
                   ?>
-                    <button <?php echo $btn_off ?> type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="definirDadosModal('Confimação', 'Tem certeza que deseja excluir a Tarefa?')">Excluir</button>
-                    <button type='submit' name='salvar' class='btn btn-primary '>Salvar</button>
+                  <button <?php echo $btn_off ?> type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="definirDadosModal('Confimação', 'Tem certeza que deseja excluir a Tarefa?')">Excluir</button>
+                  <button type='submit' name='salvar' class='btn btn-primary '>Salvar</button>
 
-                    <?php 
-                      $finaliza_off = "";
-                      if (mb_strpos($_GET['finalizado_tarefa'], $_SESSION['usuario_logado']) !== false && $_SESSION['usuario_logado'] !== "ANIBAL") {
-                        $finaliza_off = "disabled";
-                      }
-                    ?>
-                    <button <?php echo $finaliza_off; ?> type='submit' name='finalizar' class='btn btn-success '>Finalizar</button>
+                  <?php 
+                    $finaliza_off = "";
+                    if (mb_strpos($_GET['finalizado_tarefa'], $_SESSION['usuario_logado']) !== false && $_SESSION['usuario_logado'] !== "ANIBAL") {
+                      $finaliza_off = "disabled";
+                    }
+                  ?>
+                  <button <?php echo $finaliza_off; ?> type='submit' name='finalizar' class='btn btn-success '>Finalizar</button>
 
 
 
-                            <!-- Modal -->
-                    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body" id="modal-body">
-                            ...
-                          </div>
-                          <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
-                            <button type="submit" name="excluir" class="btn btn-danger">Continuar</button>
-                          </div>
+                          <!-- Modal -->
+                  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog">
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+                          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body" id="modal-body">
+                          ...
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                          <button type="submit" name="excluir" class="btn btn-danger">Continuar</button>
                         </div>
                       </div>
                     </div>
+                  </div>
 
 
                   <?php 
                   elseif(!isset($_GET['modo'])) :
                     ?>
-                    <button type='submit' name='cadastrar' class='btn btn-primary '>Cadastrar</button>
+                    <button id='btn_cadastrar_tarefa' type='submit' name='cadastrar' class='btn btn-primary '>Cadastrar</button>
                     <?php 
                     endif;
                   ?>
@@ -182,6 +182,54 @@ $log->cadLog("Acessou a página Cadastro de Tarefas");
     </div>      
     </div><!--Final do container-fluid-->
 
+    <style>
+      .bg_branco{
+        position: absolute; 
+        left: 0px; top: 0px; 
+        background-color: rgba(255, 255, 255, 0.8); 
+        width: 95vw; 
+        height: 95vh;
+        overflow: hidden;
+      }
+      .img_loading{
+        position: absolute; 
+        left: 45vw; top: 45vh; 
+        width: 150px;
+        text-align: center;
+      }
+      .img_loading img{
+        width: 50px;
+      }
+    </style>
+    <div class="bg_branco"></div>
+    <div class="img_loading">
+      <img src="../imgs/loading.gif" alt="">
+      <p id="p_loading">Cadastrando...</p>
+    </div>
+    <script>
+      $('.bg_branco').hide();
+      $('.img_loading').hide();
+      $('#btn_cadastrar_tarefa').click(
+        function(){
+          if($('#nome_tarefa').val() !== "" & $('#descricao_tarefa').val() !== ""){
+            $('.bg_branco').fadeIn();
+            $('.img_loading').fadeIn();
+            $('#p_loading').delay(1000).fadeOut();
+            $('#p_loading').delay(1000).fadeIn();
+            setTimeout(function() { 
+              $('#p_loading').text('Enviado e-mails...');
+            }, 2000);
+            $('#p_loading').delay(1000).fadeOut();
+            $('#p_loading').delay(1000).fadeIn();
+            setTimeout(function() { 
+              $('#p_loading').text('Concluindo...');
+            }, 5000);
+            
+          }
+          
+        }
+      )
+    </script>
 
 
 
