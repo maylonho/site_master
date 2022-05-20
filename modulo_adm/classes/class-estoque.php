@@ -137,6 +137,8 @@ class Estoque {
             $result = mysqli_query($conexao, $sql);
             
                 if(mysqli_affected_rows($conexao)){
+                    $log = new Log();
+                    $log->cadLog("Alterou quant. equip: ID: " . $id_equip . ". quant: " . $qtd_equip);
                     $_SESSION['update_equip_realizado'] = true;
                     echo "<script>location.href='estoque.php'</script>";
                 }
