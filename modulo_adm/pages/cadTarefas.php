@@ -52,7 +52,7 @@ $log->cadLog("Acessou a página Cadastro de Tarefas");
 
           <div class="col-md-9">
               <label for="nome_tarefa" class="form-label">Nome da Tarefa</label>
-              <input value="<?php if(isset($_GET['nome_tarefa'])) : echo $_GET['nome_tarefa']; endif; ?>" type="text" class="form-control" id="nome_tarefa" name="nome_tarefa" required>
+              <input maxlength="190" value="<?php if(isset($_GET['nome_tarefa'])) : echo $_GET['nome_tarefa']; endif; ?>" type="text" class="form-control" id="nome_tarefa" name="nome_tarefa" required>
             </div>
             <div class="col-md-3">
               <label for="urgencia_tarefa" class="form-label">Prioridade</label>
@@ -68,8 +68,20 @@ $log->cadLog("Acessou a página Cadastro de Tarefas");
             </div>
             <div class="col">
               <label for="descricao_tarefa" class="form-label">Descrição da Tarefa</label>
-              <input value="<?php if(isset($_GET['descricao_tarefa'])) : echo $_GET['descricao_tarefa']; endif; ?>" type="text" class="form-control" id="descricao_tarefa" name="descricao_tarefa" required>
+              <input maxlength="490" value="<?php if(isset($_GET['descricao_tarefa'])) : echo $_GET['descricao_tarefa']; endif; ?>" type="text" class="form-control" id="descricao_tarefa" name="descricao_tarefa" required>
             </div>
+
+            <p id="desc_tarefa"></p>
+
+            <script>
+              var tesss = $('#descricao_tarefa').val();
+              $('#desc_tarefa').text(tesss);
+
+              
+              $('#descricao_tarefa').keyup(function(){
+                $("#desc_tarefa").text($("#descricao_tarefa").val());
+              });
+            </script>
 
             <?php
               if(isset($_SESSION['edit_tarefa_erro'])){
