@@ -66,6 +66,8 @@ class Tarefas {
             $linkedit .= "finalizado_tarefa=" . str_replace(' ', '+', $finalizado_tarefa) . "&";
             $linkedit .= "modo=editar";
 
+            $linkedit = preg_replace('/[ ]|[\t]/', '+', $linkedit);
+            
             $corlinhaon = "linha_tabela_azul";
             $corlinhaoff = "linha_tabela_branco";
 
