@@ -1,7 +1,9 @@
 <?php
 session_start();
+include("../classes/class-manutencao.php");
 include("../php/verifica_login.php");
 $_SESSION['pg'] = "cadManut"; 
+$tarefas = new Servicos();
 ?>
 
 <!DOCTYPE html>
@@ -141,6 +143,12 @@ $_SESSION['pg'] = "cadManut";
             endif;
             unset($_SESSION['cad_manut_realizado']);
             unset($_SESSION['cad_manut_erro']);
+            
+            
+            if(isset($_GET['numero_serie_servico'])){
+              $numero_serie_servico =  $_GET['numero_serie_servico'];
+              $tarefas->listarManutSelec("SELECT *,date_format(`data_servico`,'%d/%m/%Y - %H:%i') as `data_servico` FROM servicos WHERE numero_serie_servico like '%$numero_serie_servico%' ORDER BY id_servico DESC");
+            }          
           ?>
         </div>
               
