@@ -91,7 +91,7 @@ class Estoque {
             echo 
             "
                 <div id='equip".$id_equip."' class='produto_item'>
-                    <img src='../imgs/radios/".$img_equip."' alt=''>
+                    <img src='../imgs/".$img_equip."' alt=''>
                     <form id='form_equip".$id_equip."' class='row justify-content-center' action=''>
                     <div style='width: 150px;'>
                         <input value='".$id_equip."' type='text' class='form-control d-none' id='id_equip' name='id_equip'>

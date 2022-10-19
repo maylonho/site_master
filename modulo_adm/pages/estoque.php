@@ -109,6 +109,29 @@ $log->cadLog("Acessou a página Estoque");
         
           ?>
 
+          <div class="col-12 mt-5">
+            <h3 style="text-align: left;"> - Acessórios</h3>
+          </div>
+          <?php
+            if($_SESSION['var_estoq_view'] == "all"){
+              echo "<script>$('#mostrar_tudo').hide();</script>";
+              if($_SESSION['var_estoq_modo'] == "bloco"){
+                $estoque->listarEquipamentosBloco("SELECT * FROM estoque WHERE tipo_equip='ACESSORIO' order by nome_equip");
+              }else{
+                $estoque->listarEquipamentosLista("SELECT * FROM estoque WHERE tipo_equip='ACESSORIO' order by nome_equip");
+              }
+            }
+            else{
+              echo "<script>$('#mostrar_disp').hide();</script>";
+              if($_SESSION['var_estoq_modo'] == "bloco"){
+                $estoque->listarEquipamentosBloco("SELECT * FROM estoque WHERE tipo_equip='ACESSORIO' and qtd_equip>0 order by nome_equip");
+              }else{
+                $estoque->listarEquipamentosLista("SELECT * FROM estoque WHERE tipo_equip='ACESSORIO' and qtd_equip>0 order by nome_equip");
+              }
+            }
+        
+          ?>
+
           <!-- ATUALIZA O NUMERO DE RADIOS EM ESTOQUE -->
           <?php
             if(isset($_GET['id_equip']) && isset($_GET['qtd_equip']) && isset($_GET['salvar_eq'])){
