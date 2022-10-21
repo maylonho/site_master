@@ -75,6 +75,11 @@ $tarefas = new Servicos();
                 <option>DGP8050EX</option>
                 <option>DGP8550EX</option>
                 <option>PD506</option>
+                <option>EM200/400</option>
+                <option>PRO5100</option>
+                <option>DEM300/400</option>
+                <option>DGM5000/8000</option>
+                <option>DGM4100/6100</option>
               </select>
             </div>
             <div class="col-md-8">
