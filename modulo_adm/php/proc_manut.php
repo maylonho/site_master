@@ -8,6 +8,7 @@
     $numero_serie_servico = strtoupper(mysqli_real_escape_string($conexao, trim($_POST['numero_serie_servico'])));
     $defeito_servico = mysqli_real_escape_string($conexao, trim($_POST['defeito_servico']));
     $solucao_servico = mysqli_real_escape_string($conexao, trim($_POST['solucao_servico']));
+    $status_servico = mysqli_real_escape_string($conexao, trim($_POST['status_servico']));
 
 
     function get_post_action($name)
@@ -24,7 +25,7 @@
 
     switch (get_post_action('cadastrar', 'excluir', 'salvar')) {
         case 'cadastrar':
-            $sql = "INSERT INTO servicos (data_servico, modelo_servico, numero_serie_servico, defeito_servico, solucao_servico) VALUES (NOW(), '$modelo_servico', '$numero_serie_servico', '$defeito_servico', '$solucao_servico')";
+            $sql = "INSERT INTO servicos (data_servico, modelo_servico, numero_serie_servico, defeito_servico, solucao_servico, status_servico) VALUES (NOW(), '$modelo_servico', '$numero_serie_servico', '$defeito_servico', '$solucao_servico', '$status_servico')";
             if($conexao->query($sql) === TRUE) {
                 $_SESSION['cad_manut_realizado'] = true;
             }else{
@@ -48,7 +49,7 @@
             break;
 
         case 'salvar':
-            $sql = "UPDATE `servicos` SET `numero_serie_servico`='$numero_serie_servico', `modelo_servico`='$modelo_servico', `defeito_servico`='$defeito_servico', `solucao_servico`='$solucao_servico'  WHERE  `id_servico`='$id_servico'";
+            $sql = "UPDATE `servicos` SET `numero_serie_servico`='$numero_serie_servico', `modelo_servico`='$modelo_servico', `defeito_servico`='$defeito_servico', `solucao_servico`='$solucao_servico', `status_servico`='$status_servico'  WHERE  `id_servico`='$id_servico'";
             $result = mysqli_query($conexao, $sql);
             
                 if(mysqli_affected_rows($conexao)){

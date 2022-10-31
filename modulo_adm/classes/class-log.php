@@ -31,20 +31,27 @@
                 </tr>
                 </thead>
                 <tbody>";
+            $_SESSION['atvnow']  = '';
+            $atvnow = $_SESSION['atvnow'];
             while($row = mysqli_fetch_assoc($result)){
                 $data_log = $row['data_log'];
                 $atividade_log = $row['atividade_log'];
                 $usuario_log = $row['usuario_log'];
-                 
-                echo 
-                "
-                    <tr>
-                        <td class='col-2'>".$data_log."</td>
-                        <td class='col-2'>".$usuario_log."</td>
-                        <td class='col-auto'>".$atividade_log."</td>
-                    </tr>
+
                 
-                ";
+                if($atividade_log != $atvnow){
+                    echo 
+                    "
+                        <tr>
+                            <td class='col-2'>".$data_log."</td>
+                            <td class='col-2'>".$usuario_log."</td>
+                            <td class='col-auto'>".$atividade_log."</td>
+                        </tr>
+                    
+                    ";
+                    $atvnow = $atividade_log;
+                }
+                
             }
             echo "</tbody>
             </table>";

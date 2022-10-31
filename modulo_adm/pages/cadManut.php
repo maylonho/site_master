@@ -50,15 +50,12 @@ $tarefas = new Servicos();
         ?>
           <form class="row g-3" method="POST" action="../php/proc_manut.php<?php echo $id_servico; ?>">
 
-          <div class="col-md-4">
+            <div class="col-md-3">
               <label for="numero_serie_servico" class="form-label">Número de Série</label>
               <input autofocus <?php echo $inputoff; ?>  tabindex="1" value="<?php if(isset($_GET['numero_serie_servico'])) : echo $_GET['numero_serie_servico']; endif; ?>" type="text" class="form-control" id="numero_serie_servico" name="numero_serie_servico" required>
             </div>
-            <div class="col-md-8">
-              <label for="defeito_servico" class="form-label">Problema</label>
-              <input <?php echo $inputoff; ?>  tabindex="3" value="<?php if(isset($_GET['defeito_servico'])) : echo $_GET['defeito_servico']; endif; ?>" type="text" class="form-control" id="defeito_servico" name="defeito_servico" required>
-            </div>
-            <div class="col-md-4">
+    
+            <div class="col-md-3">
               <label for="modelo_servico" class="form-label">Modelo</label>
               <select disable  tabindex="2" type="text" class="form-select" id="modelo_servico" name="modelo_servico">
                 <?php
@@ -82,7 +79,25 @@ $tarefas = new Servicos();
                 <option>DGM4100/6100</option>
               </select>
             </div>
-            <div class="col-md-8">
+
+            
+            <div class="col-md-6">
+              <label for="status_servico" class="form-label">Status</label>
+              <select disable  tabindex="2" type="text" class="form-select" id="status_servico" name="status_servico">
+                <?php
+                  if(isset($_GET['status_servico'])) : echo "<option selected>" . $_GET['status_servico'] . "</option>"; endif;
+                ?>
+                <option>ESTOQUE</option>
+                <option>LOCADO</option>
+                <option>MANUTENÇÃO</option>
+              </select>
+            </div>
+
+            <div class="col-md-6">
+              <label for="defeito_servico" class="form-label">Problema</label>
+              <input <?php echo $inputoff; ?>  tabindex="3" value="<?php if(isset($_GET['defeito_servico'])) : echo $_GET['defeito_servico']; endif; ?>" type="text" class="form-control" id="defeito_servico" name="defeito_servico" required>
+            </div>
+            <div class="col-md-6">
               <label for="solucao_servico" class="form-label">Solução</label>
               <input <?php echo $inputoff; ?>  tabindex="4" value="<?php if(isset($_GET['solucao_servico'])) : echo $_GET['solucao_servico']; endif; ?>" type="text" class="form-control" id="solucao_servico" name="solucao_servico" required>
             </div>
