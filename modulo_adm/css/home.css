@@ -1,0 +1,17 @@
+.faltam_dias_ferias{
+    display: flex;
+    justify-content: center;
+    padding-bottom: 20px;
+  }
+  .faltam_dias_ferias img{
+    width: 800px;
+    border-radius: 30px;
+  }
+  .h1_ferias{
+    position: relative;
+    color: #fff;
+    top: 89px;
+    left: -460px;
+    font-size: 40pt;
+    font-family: Comic Sans MS, Comic Sans, cursive;
+  }

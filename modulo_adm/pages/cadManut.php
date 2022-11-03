@@ -63,14 +63,11 @@ $tarefas = new Servicos();
                 ?>
                 <option>PRO5150</option>
                 <option>EP450</option>
-                <option>DEP450</option>
-                <option>DEP250</option>
-                <option>DGP5050</option>
-                <option>DGP8050</option>
-                <option>DGP8050E</option>
-                <option>DGP8550</option>
-                <option>DGP8050EX</option>
-                <option>DGP8550EX</option>
+                <option>DEP450/DEP250</option>
+                <option>DGP5050/DGP5550</option>
+                <option>DGP8050/DGP8550</option>
+                <option>DGP8050E/DGP8550E</option>
+                <option>DGP8050EX/DGP8550EX</option>
                 <option>PD506</option>
                 <option>EM200/400</option>
                 <option>PRO5100</option>

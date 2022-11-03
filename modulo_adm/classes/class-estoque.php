@@ -92,6 +92,9 @@ class Estoque {
             "
                 <div id='equip".$id_equip."' class='produto_item'>
                     <img src='../imgs/".$img_equip."' alt=''>
+                    <div id='info".$id_equip."'>
+                        <h5 id='info'> ".$nome_equip." <br/> Dispon. : ".$qtd_equip." </h5>
+                    </div>
                     <form id='form_equip".$id_equip."' class='row justify-content-center' action=''>
                     <div style='width: 150px;'>
                         <input value='".$id_equip."' type='text' class='form-control d-none' id='id_equip' name='id_equip'>
@@ -101,22 +104,19 @@ class Estoque {
                     </div>
                     
                     </form>
-                    <div id='info".$id_equip."'>
-                        <h5 id='info'> ".$nome_equip." <br/> Dispon. : ".$qtd_equip." </h5>
-                    </div>
                 </div>
 
                 <script>
-                    $('#form_equip".$id_equip."').css('display','none');
+                    $('#form_equip".$id_equip."').hide();
                     $('#equip".$id_equip."').mouseenter(function() {
-                        $('#form_equip".$id_equip."').css('display','flex');
-                        $('#info".$id_equip."').css('display','none');
+                        $('#form_equip".$id_equip."').show();
+                        $('#info".$id_equip."').hide();
                     })
 
                     
                     $('#equip".$id_equip."').mouseleave(function() {
-                        $('#form_equip".$id_equip."').css('display','none');
-                        $('#info".$id_equip."').css('display','flex');
+                        $('#form_equip".$id_equip."').hide();
+                        $('#info".$id_equip."').show();
                     })
                 </script>
 

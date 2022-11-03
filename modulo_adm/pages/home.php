@@ -17,7 +17,7 @@ $log->cadLog("Acessou a página Home");
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Modulo administrador - Master</title> 
-
+    <link rel="stylesheet" href="../css/home.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
     <link rel="shortcut icon" href="../imgs/favicon.ico" />
 </head>
@@ -55,6 +55,23 @@ $log->cadLog("Acessou a página Home");
         <div class="container d-flex justify-content-center mb-4">
           <h4>Funcionário: <?php echo $_SESSION['nome_func_logado']; ?></h4>
         </div>
+
+      <!--FERIAS-->
+
+      <?php
+        $data_inicio = new DateTime(date('Y/m/d'));
+        $data_fim = new DateTime("2022-12-23");
+    
+        // Resgata diferença entre as datas
+        $dateInterval = $data_inicio->diff($data_fim);
+        
+      ?>
+      <div class="nada">
+        <div class="faltam_dias_ferias">
+          <img src="../imgs/faltam_dias_ferias.jpg" alt="">
+          <div class="h1_ferias"><p><?php echo $dateInterval->days; ?></p></div>
+        </div>
+      </div>
 
       <!--CARDS NOTAS-->
        <div class="row justify-content-sm-center">
