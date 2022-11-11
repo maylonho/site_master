@@ -84,9 +84,10 @@ $tarefas = new Servicos();
                 <?php
                   if(isset($_GET['status_servico'])) : echo "<option selected>" . $_GET['status_servico'] . "</option>"; endif;
                 ?>
-                <option>ESTOQUE</option>
+                <option>EM ESTOQUE</option>
                 <option>LOCADO</option>
-                <option>MANUTENÇÃO</option>
+                <option>*** MANUTENÇÃO ***</option>
+                <option>PROP. CLIENTE</option>
               </select>
             </div>
 
