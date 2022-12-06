@@ -87,6 +87,7 @@ $tarefas = new Servicos();
                 <option>EM ESTOQUE</option>
                 <option>LOCADO</option>
                 <option>*** MANUTENÇÃO ***</option>
+                <option>*** SUCATA ***</option>
                 <option>PROP. CLIENTE</option>
               </select>
             </div>
