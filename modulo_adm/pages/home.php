@@ -56,7 +56,7 @@ $log->cadLog("Acessou a página Home");
           <h4>Funcionário: <?php echo $_SESSION['nome_func_logado']; ?></h4>
         </div>
 
-      <!--FERIAS-->
+      <!--FERIAS--
 
       <?php
         $data_inicio = new DateTime(date('Y/m/d'));
@@ -72,6 +72,8 @@ $log->cadLog("Acessou a página Home");
           <div class="h1_ferias"><p><?php echo $dateInterval->days; ?></p></div>
         </div>
       </div>
+
+      <--FERIAS FIM-->
 
       <!--CARDS NOTAS-->
        <div class="row justify-content-sm-center">
